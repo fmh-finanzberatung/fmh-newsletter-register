@@ -1,0 +1,4 @@
+node_modules/
+public/build/*
+sh/deploy
+.DS_Store
