@@ -1,5 +1,6 @@
 <script>
   import axios from 'axios'; 
+  import getScreenPosition from './get-screen-position.js'; 
   axios.defaults.headers.common['Accept'] = 'application/json';
   axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
@@ -9,6 +10,9 @@
   let successMsg = '';
   let infoMsg = ''; 
   let email = '';
+
+  let screenPosition = getScreenPosition();
+
   function setMessage(msg, msgType, timeout = 5000) {
     if (msgType === 'error') {
       errorMsg = msg; 
@@ -37,16 +41,16 @@
     axios.post(url, {
       'email_address': email,
       'status':'pending',
-      /* 
-        'merge_fields':
-        {'FNAME': 'Hans-Georg', 'LNAME':'Beyer'},
-       */
+      'merge_fields': {
+        'SIGNUP_POS': screenPosition, 
+        'SIGNUP_URL': window.loction
+      },
       'interests':{},
       'language':'de',
       'vip':false,
       'location':{'latitude':0,'longitude':0},
       'marketing_permissions':[],
-      'ip_sigup':'',
+      'ip_signup':'',
       'timestamp_signup':'',
       'ip_opt':'',
       'timestamp_opt':'',
@@ -67,13 +71,13 @@
   }
 </script>
 
-<main>
+<section>
   <div class="send-off-icon"></div> 
   <h2>{title}</h2>
   <p>
     Jetzt abonnieren und Informationen zu Zinsen, Trends und Angeboten 
     erhalten! Bitte beachten Sie hierzu auch
-    <a href="/datenschutz">unsere Datenschutzbestimmungen</a>.
+    <a href="/datenschutz">unsere Datenschutz&shy;bestimmungen</a>.
   </p>
   <form>
     <input bind:value="{email}" type="text" 
@@ -89,17 +93,17 @@
       </button>
     {/if}
   </form>
-</main>
+</section>
 
 <style>
-  main, main * {
+  section, section * {
     background-color: #f3f3f3;
     box-sizing: border-box;
     margin: 0;
     border: 0;
   }
 
-  main {
+  section {
     padding: 20px;
   }
 

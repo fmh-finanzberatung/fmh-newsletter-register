@@ -1,6 +1,6 @@
 {
-  "name": "svelte-app",
-  "version": "1.0.0",
+  "name": "fmh-newsletter-register",
+  "version": "1.0.1",
   "scripts": {
     "build": "rollup -c",
     "dev": "HOST=localhost PORT=3025 rollup -c -w",
@@ -10,6 +10,9 @@
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-node-resolve": "^8.0.0",
     "axios": "^0.21.0",
+    "eslint": "^7.14.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-svelte3": "^2.7.3",
     "rollup": "^2.3.4",
     "rollup-plugin-gzip": "^2.5.0",
     "rollup-plugin-livereload": "^2.0.0",
