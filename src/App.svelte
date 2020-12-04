@@ -10,6 +10,7 @@
   let successMsg = '';
   let infoMsg = ''; 
   let email = '';
+  let who = ''; // bot prevention: ignore if filled in 
 
   let screenPosition = getScreenPosition();
 
@@ -37,6 +38,10 @@
     //return setError('Look Ma, an error message ...');
     if (!validateEmail(email)) {
       return setMessage('Dies ist keine gültige E-Mail-Adresse', 'error'); 
+    }
+    if (who) {
+      // this field cqn only be seen by a bot
+      return setMessage('Das ist nicht Dein Ernst', 'error'); 
     }
     axios.post(url, {
       'email_address': email,
@@ -82,6 +87,10 @@
   <form>
     <input bind:value="{email}" type="text" 
       placeholder="E-Mail-Adresse eintragen ..."/>
+        <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+      <div style="position: absolute; left: -5000px;" aria-hidden="true">
+        <input type="text" name="who" tabindex="-1" bind:value="{who}">
+      </div>
     <div class="message">
       <span class="error-message">{errorMsg}</span> 
       <span class="success-message">{successMsg}</span> 
