@@ -48,7 +48,7 @@
       'status':'pending',
       'merge_fields': {
         'SIGNUP_POS': screenPosition, 
-        'SIGNUP_URL': window.loction
+        'SIGNUP_URL': window.location
       },
       'interests':{},
       'language':'de',
