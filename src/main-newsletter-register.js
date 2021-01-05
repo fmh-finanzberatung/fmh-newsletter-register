@@ -1,4 +1,4 @@
-import App from './App.svelte';
+import App from './AppNewsletterRegister.svelte';
 
 setTimeout(() => {
 
@@ -11,6 +11,6 @@ setTimeout(() => {
     }
   });
 
-}, 2000);
+}, 1500);
 
 //export default app;
