@@ -5,14 +5,11 @@ setTimeout(() => {
   const app = new App({
     target: document.querySelector("#count-down"),
     props: {
-      title: 'Title',
+      title: 'FMH-Award 2021: count down ...',
       eventDate: new Date(2021, 0, 28, 16, 30, 0)
     }
   });
 
-
-
-
-}, 1500);
+}, 2500);
 
 //export default app;
