@@ -31,6 +31,22 @@ function serve() {
 	};
 }
 
+let serverInstance;
+let livereloadInstance;
+
+function serveOnce() {
+  if (serverInstance) return serverInstance; 
+  serverInstance = serve();
+  return serverInstance;
+}
+
+function livereloadOnce(watchDir) {
+  if (livereloadInstance) return livereloadInstance; 
+  livereloadInstance = livereload(watchDir);
+  return livereloadInstance;
+
+}
+
 const componentConfig = ({ input, out, cssOut }) => {
   return {
     input,
@@ -65,11 +81,11 @@ const componentConfig = ({ input, out, cssOut }) => {
 
       // In dev mode, call `npm run start` once
       // the bundle has been generated
-      !production && serve(),
+      !production && serveOnce(),
 
       // Watch the `public` directory and refresh the
       // browser on changes when not in production
-      !production && livereload('public'),
+      !production && livereloadOnce('public'),
 
       // If we're building for production (npm run build
       // instead of npm run dev), minify
