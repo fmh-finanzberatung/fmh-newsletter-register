@@ -11,13 +11,38 @@
 	<script defer src='/build/newsletter-register.js'></script>
 	<link rel='stylesheet' href='/build/count-down.css'>
 	<script defer src='/build/count-down.js'></script>
+	<link rel='stylesheet' href='/build/random-laureates.css'>
+	<script defer src='/build/random-laureates.js'></script>
+	<link rel='stylesheet' href='/build/gallery.css'>
+	<script defer src='/build/gallery.js'></script>
+	<link rel='stylesheet' href='/build/article-teasers.css'>
+	<script defer src='/build/article-teasers.js'></script>
 </head>
 <body>
-  <div style="float:left;margin-top: 50px;width:30%;height:200px;">
+  <div style="float:left;margin-top: 50px;width:45%;">
     <section id="newsletter-register"></section>
   </div>
-  <div style="float: right;margin-top: 50px;width:30%;height:400px;">
-    <section id="count-down"></section>
+  <div style="float: right;margin-top: 50px;width:45%;">
+    <section id="count-down"
+      data-year="2021"
+      data-month="1"
+      data-day="28"
+      data-hour="11"
+      data-interval="5000"></section>
   </div>
+  <div style="clear:both; float: left;margin-top: 50px;width:45%;">
+    <section id="random-laureates"
+     interval="3000"
+     year="2017"></section>
+  </div>
+  <div style="float: right;margin-top: 50px;width:45%;">
+    <section id="gallery"
+     year="2020"></section>
+  </div>
+  <div style="clear:both; float: left;margin-top: 50px;width:45%;">
+    <section id="article-teasers"
+      data-keyword="fmh-award"
+      data-page-size="2" 
+      data-url="https://www.fmh.de/api/topics/keyword-articles"></section> </div>
 </body>
 </html>

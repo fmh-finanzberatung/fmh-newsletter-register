@@ -4,7 +4,8 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import sveltePreprocess from 'svelte-preprocess';
-import { terser } from 'rollup-plugin-terser';
+import { config } from 'dotenv';
+import replace from '@rollup/plugin-replace';import { terser } from 'rollup-plugin-terser';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -20,7 +21,12 @@ function serve() {
 	return {
 		writeBundle() {
 			if (server) return;
-			server = require('child_process').spawn('npm', ['run', 'start', '--', '--dev'], {
+			server = require('child_process').spawn('npm', [
+        'run', 'start', '--', '--dev',
+        //'--http3',
+        //'--key /Users/kastner/self-signed/_wildcard.fmh.de-key.pem',
+        //'--cert /Users/kastner/self-signed/_wildcard.fmh.de.pem'
+    ], {
 				stdio: ['ignore', 'inherit', 'inherit'],
 				shell: true
 			});
@@ -57,6 +63,16 @@ const componentConfig = ({ input, out, cssOut }) => {
       file: out 
     },
     plugins: [
+    
+      replace({   
+        //FOO: 'bar',      
+        process: JSON.stringify({
+          env: {
+             isProd: production,
+             ...config().parsed
+          } 
+       }),
+      }),
       svelte({
         // enable run-time checks when not in production
         dev: !production,
@@ -108,5 +124,20 @@ export default [
     input:  'src/main-count-down.js',
     out: 'public/build/count-down.js',
     cssOut: 'count-down.css'
-  })
+  }),
+  componentConfig({
+    input:  'src/main-random-laureates.js',
+    out: 'public/build/random-laureates.js',
+    cssOut: 'random-laureates.css'
+  }),
+  componentConfig({
+    input:  'src/main-gallery.js',
+    out: 'public/build/gallery.js',
+    cssOut: 'gallery.css'
+  }),
+  componentConfig({
+    input:  'src/main-article-teasers.js',
+    out: 'public/build/article-teasers.js',
+    cssOut: 'article-teasers.css'
+  }),
 ];

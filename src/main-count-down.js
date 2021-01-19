@@ -1,15 +1,30 @@
 import App from './AppCountDown.svelte';
+import EleAttr from './lib/ele-attr.js';
+
+//const delay = EleAttr('#count-down').int('delay', 0);
+
+const target = document.querySelector("#count-down");
+const ele = EleAttr(target);
+
+const year = ele.int('year', 2000); 
+const month = ele.int('month', 1); 
+const day = ele.int('day', 1); 
+const hour = ele.int('hour', 1); 
+const min = ele.int('min', 1); 
+const sec = ele.int('sec', 1); 
+const delay = ele.int('delay',0);
+const interval = ele.int('interval',0);
 
 setTimeout(() => {
 
-  const app = new App({
-    target: document.querySelector("#count-down"),
+  new App({
+    target,
     props: {
       title: 'FMH-Award 2021: count down ...',
-      eventDate: new Date(2021, 0, 28, 16, 30, 0)
+      eventDate: new Date(year, month -1, day, hour, min, sec),
+      interval 
     }
   });
-
-}, 2500);
+}, delay);
 
 //export default app;
