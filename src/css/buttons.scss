@@ -1,0 +1,12 @@
+@mixin button {
+  letter-spacing: 0.05em; 
+  height: 34px;
+  line-height: 32px;
+  font-size: 16px;
+  border-radius: 5px; 
+}
+
+@mixin button__standard {
+  color: white;
+  background-color: $color__text--secondary; 
+}

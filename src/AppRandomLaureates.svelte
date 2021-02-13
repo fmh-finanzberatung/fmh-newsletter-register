@@ -1,30 +1,43 @@
 <script>
   import axios from 'axios'; 
+  axios.defaults.headers.common['Accept'] = 'application/json';
+  axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+  axios.defaults.headers.common['Content-Type'] = 'application/json';
   import randomListInterval from './lib/random-list-interval'; 
   export let interval = 0;
-  export let year = new Date().getFullYear();
-
-  const reqYear = year || new Date().getFullYear() - 1;
-  const apiHost = process.env.VUE_APP_API_HOST_AUSZEICHNUNGEN;
+  export let fromYear = 0;
+  export let throughYear = 0;
 
   let url =
-    `${apiHost}/laureates/fmh+award/badges/${reqYear}.json`;
+    `${process.env.AWARDS_API_HOST}/laureates/fmh+award/badges/${fromYear}`;
+
+  if (throughYear) {
+    url += `/${throughYear}`;
+  }
+
+  url += `.json`;
+
   let imgSrc = '';
   let imgAlt = '';
   let caption = '';
   let size = 'big';
   let allLaureatesUrl = '';
 
+  function jpegFileName(fileName) {
+    if (!fileName) return '';
+    return fileName.replace(/gif$|png$/, 'jpg');
+  }
+
   function swap(randItem) {
 
-    console.log('randItem'. randItem);
+    const imgFileName = jpegFileName(randItem.image_file_name);
 
     imgAlt = 
       `${randItem.bank.name} ${randItem.commendation.award} ${randItem.commendation.volume.year}`;
     imgSrc = 
-      `https://auszeichnungen.fmh.de/laureates/images/${randItem.id}/${size}/${randItem.file_hash}!${randItem.image_file_name}`;
-      caption = randItem.bank.name;
-      allLaureatesUrl=`https://auszeichnungen.fmh.de/fmh-award/${year}/preistraeger`; 
+      `https://auszeichnungen.fmh.de/laureates/images/${randItem.id}/${size}/${randItem.file_hash}!${imgFileName}`;
+    caption = randItem.bank.name;
+    allLaureatesUrl=`https://auszeichnungen.fmh.de/fmh-award/${randItem.commendation.volume.year}/preistraeger`; 
   }
 
   axios.get(url)
@@ -54,29 +67,55 @@
   @import './css/colors.scss';
   @import './css/fonts.scss';
   .random-laureates {
-    margin-left: auto;
-    margin-right: auto;
+    &, & * {
+      box-sizing: border-box;
+    }
+    padding-bottom: 10px; 
+    width: 100%;
+    height: 100%;
+    float: left; 
+    border-radius: 4px; 
+    background-color: #f3f3f3; 
     display: block;
-    max-width: 250px;
+    box-shadow: 0px 4px 5px rgba(black, 0.2);  
+    &__figure {
+      border-radius: 4px;
+      background-color: white;
+      padding: 10px; 
+    } 
+    &__figure, &__link {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 300px;
+    } 
     &__figcaption, &__link {
       text-align: center;
       font-size: 13.5px;
-      line-height: 1.5em;
+      line-height: 1.3em;
       font-family: $font-family__primary;
+      font-size: $font-size__primary;
     }
     &__img {
       display: block;
-      width: 100%;
+      width: auto;
+      margin-left: auto;
+      margin-right: auto;
+      max-height: 300px;
     }
     &__figcaption {
-      color: $color__text; 
+      width: 100%;
+      display: block; 
+      margin: 0.5em auto 0;
+      color: $color__text;
+      font-weight: 500; 
     }
     &__link {
       display: block;
+      line-height: 1.3em;
+      display: block;
       text-align: center;
-      color: $color__primary;
+      color: $color__text--secondary;
       text-decoration: none;
     }
   } 
-
 </style>

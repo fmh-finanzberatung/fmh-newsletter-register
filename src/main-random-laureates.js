@@ -1,17 +1,26 @@
 import App from './AppRandomLaureates.svelte';
+import EleAttr from './lib/ele-attr.js';
 
 // optional attribute: year
 
+const target = document.querySelector('#random-laureates');
+const ele = EleAttr(target);
+const fromYear = ele.int('fromYear', 0); 
+const throughYear = ele.int('throughYear', 0); 
+const delay = ele.int('delay',0);
+const interval = ele.int('interval', 3000);
+
+console.log('random-laureates delay:', delay); 
+
 setTimeout(() => {
-  const ele = document.querySelector('#random-laureates');
-  const parsedYear =  parseInt(ele.getAttribute('year'));
+  
   new App({
-    target: ele,
+    target: target,
     props: {
-      interval: 3000, 
-      year: isNaN(parsedYear) ? new Date().fullYear() : parsedYear 
+      interval, 
+      fromYear,
+      throughYear
     }
   });
-
-}, 0);
+}, delay);
 

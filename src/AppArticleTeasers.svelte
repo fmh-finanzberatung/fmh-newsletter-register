@@ -1,5 +1,8 @@
 <script>
   import axios from 'axios'; 
+  axios.defaults.headers.common['Accept'] = 'application/json';
+  axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+  axios.defaults.headers.common['Content-Type'] = 'application/json';
   import preferredImage from './lib/preferred-image.js';
   import preferredUrl from './lib/preferred-url.js';
   export let url = '';
@@ -116,7 +119,7 @@
       }
     }
     &__title, &__more {
-     color: $color__primary;
+     color: $color__text--secondary;
     }
     &__title, &__subtitle {
       display: block;

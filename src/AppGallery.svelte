@@ -1,5 +1,8 @@
 <script>
   import axios from 'axios'; 
+  axios.defaults.headers.common['Accept'] = 'application/json';
+  axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+  axios.defaults.headers.common['Content-Type'] = 'application/json';
 
   export let year = new Date().getFullYear();
   export let items = [];
@@ -9,10 +12,9 @@
   export let imgAlt = '';
 
   const reqYear = year || new Date().getFullYear() - 1;
-  const apiHost = process.env.VUE_APP_API_HOST_AUSZEICHNUNGEN;
   let index = -1;
 
-  const url = `${apiHost}/photos/fmh+award/awards/${reqYear}.json`;
+  const url = `${process.env.AWARDS_API_HOST}/photos/fmh+award/awards/${reqYear}.json`;
 
   function populateImage(index) {
     const item = items[index];
@@ -41,7 +43,9 @@
   .then((res) => {
     if (!res.data || !res.data.length) return false;
     for (let i = 0, l = res.data.length; i < l; i++) {
-      items = [...items, res.data[i]]; 
+      if (res.data[i].active) { 
+        items = [...items, res.data[i]]; 
+      }
     }
     index = 0;
     populateImage(index); 
@@ -91,7 +95,7 @@
     &__figcaption {
       padding: 0.5em 1em;
       font-size: 13.5px;
-      line-height: 1.5em;
+      line-height: 1.35em;
       font-family: $font-family__primary;
       color: white;
       border-top: 2.5px solid rgba($color__primary--lighter, 0.75); 
@@ -99,6 +103,21 @@
       position: absolute;
       bottom: 0;
       width: 100%;
+
+      transition: height 0.6s;
+      height: 2.5em; 
+      max-height: 200px;
+      overflow-y: hidden;
+      overflow-x: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis; 
+      &:hover {
+        height: auto; 
+        overflow-y: visible;
+        overflow-x: visible;
+        white-space: normal;
+        text-overflow: clip; 
+      }
     }
     &__nav {
       z-index: 1;

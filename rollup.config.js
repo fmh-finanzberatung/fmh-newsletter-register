@@ -11,6 +11,10 @@ const production = !process.env.ROLLUP_WATCH;
 
 console.log('config.js production', production);
 
+const AWARDS_API_HOST = production ? 'https://api-auszeichnungen.fmh.de' : 'http://localhost:3001';
+
+console.log('AWARDS_API_HOST', AWARDS_API_HOST);
+
 function serve() {
 	let server;
 	
@@ -53,6 +57,9 @@ function livereloadOnce(watchDir) {
 
 }
 
+
+
+
 const componentConfig = ({ input, out, cssOut }) => {
   return {
     input,
@@ -65,11 +72,11 @@ const componentConfig = ({ input, out, cssOut }) => {
     plugins: [
     
       replace({   
-        //FOO: 'bar',      
         process: JSON.stringify({
           env: {
-             isProd: production,
-             ...config().parsed
+            AWARDS_API_HOST,
+            isProd: production,
+            ...config().parsed
           } 
        }),
       }),
@@ -140,4 +147,19 @@ export default [
     out: 'public/build/article-teasers.js',
     cssOut: 'article-teasers.css'
   }),
+  componentConfig({
+    input:  'src/main-youtube-video.js',
+    out: 'public/build/youtube-video.js',
+    cssOut: 'youtube-video.css'
+  }),
+  componentConfig({
+    input:  'src/main-text-box.js',
+    out: 'public/build/text-box.js',
+    cssOut: 'text-box.css'
+  }),
+  componentConfig({
+    input:  'src/main-image-box.js',
+    out: 'public/build/image-box.js',
+    cssOut: 'image-box.css'
+  })
 ];

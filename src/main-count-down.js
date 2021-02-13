@@ -6,6 +6,7 @@ import EleAttr from './lib/ele-attr.js';
 const target = document.querySelector("#count-down");
 const ele = EleAttr(target);
 
+const title = ele.str('title', 'FMH-Award 2021'); 
 const year = ele.int('year', 2000); 
 const month = ele.int('month', 1); 
 const day = ele.int('day', 1); 
@@ -20,7 +21,7 @@ setTimeout(() => {
   new App({
     target,
     props: {
-      title: 'FMH-Award 2021: count down ...',
+      title,
       eventDate: new Date(year, month -1, day, hour, min, sec),
       interval 
     }

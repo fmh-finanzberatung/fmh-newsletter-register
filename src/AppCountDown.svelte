@@ -10,8 +10,6 @@
   
   let index = -1;
   
-  const apiHost = process.env.VUE_APP_API_HOST_AUSZEICHNUNGEN;
-  
   function populateImage(item) {
     imgSrc = 
       `https://auszeichnungen.fmh.de/photos/images/${item.id}/${size}/${item.image_file_name}`;
@@ -19,7 +17,7 @@
     caption = item.title;
   }
   
-  const url = `${apiHost}/photos/fmh+award/awards/${year}.json`;
+  const url = `${process.env.AWARDS_API_HOST}/photos/fmh+award/awards/${year}.json`;
 
   axios.get(url)
     .then((res) => {
@@ -155,7 +153,7 @@
       text-align: center;
       text-shadow: 0px 0px 2px rgba($color__primary--dark, 0.8); 
       color: white;
-      font-weight: 400;
+      font-weight: 500;
       font-family: $font-family__primary;
     }
     &__counter {

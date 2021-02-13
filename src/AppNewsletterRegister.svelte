@@ -76,7 +76,7 @@
   }
 </script>
 
-<section>
+<div class="newsletter-register">
   <div class="send-off-icon"></div> 
   <h2>{title}</h2>
   <p>
@@ -102,23 +102,29 @@
       </button>
     {/if}
   </form>
-</section>
+</div>
 
-<style>
-  section, section * {
+<style lang="scss">
+  @import './css/colors.scss';
+  @import './css/fonts.scss';
+  @import './css/buttons.scss';
+  
+  .newsletter-register {
+    
+    height: 100%; 
+    width: 100%; 
     background-color: #f3f3f3;
+    padding: 20px;
+
+  }
+  .newsletter-register, .newsletter-register * {
     box-sizing: border-box;
     margin: 0;
     border: 0;
   }
-
-  section {
-    padding: 20px;
-  }
-
   
-  h2, p, input, button, .error-message, .info-message, .success-message {
-    font-family: roboto, arial, helvetica, sans-serif;
+  h2, p, input {
+    font-family: $font-family__primary;
   }  
   h2, p, form {
     text-align: center;
@@ -127,7 +133,6 @@
     color: #333;
   }
   input[type=text], button[type=submit] {
-    letter-spacing: 0.05em; 
     width: 100%;
     max-width: 350px; 
     margin: 15px auto; 
@@ -157,7 +162,7 @@
   }
   button[type=submit]:hover {
     color: white;
-    background-color: #1194db;
+    background-color: $color__text--secondary ;
 
   }  
   .error-message, .error-message, .success-message {
