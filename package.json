@@ -1,6 +1,6 @@
 {
   "name": "fmh-newsletter-register",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "scripts": {
     "build": "rollup -c",
     "dev": "HOST=localhost PORT=3000 rollup -c -w",
