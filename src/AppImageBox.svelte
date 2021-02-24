@@ -2,13 +2,9 @@
   export let caption= "";
   export let imgUrl= "";
   export let blowUpUrl = "";
-  export let captionLink= "";
+  export let captionUrl= "";
 
   export let blowUpVisible = false;
-
-  console.log('image box   ***************');
-  console.log('img     url ***************', imgUrl);
-  console.log('blow up url ***************', blowUpUrl);
 
   function showBlowUp() {
     if (!blowUpUrl) return false;
@@ -18,12 +14,10 @@
   function hideBlowUp() {
     blowUpVisible = false;
   }
-
 </script>
 
 <template>
   <figure class="blow-up"> 
-    blow up 
     <img src="{blowUpUrl}" />
     {#if caption}
       <figcaption
