@@ -1,5 +1,5 @@
 import App from './AppRandomLaureates.svelte';
-import EleAttr from './lib/ele-attr.js';
+import EleAttr from 'mk-data-attribute';
 
 // optional attribute: year
 

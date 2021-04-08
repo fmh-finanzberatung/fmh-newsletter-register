@@ -1552,6 +1552,10 @@ minizlib@^2.1.1:
     minipass "^3.0.0"
     yallist "^4.0.0"
 
+"mk-data-attribute@https://github.com/mkastner/mk-data-attribute.git#v0.0.1":
+  version "0.0.1"
+  resolved "https://github.com/mkastner/mk-data-attribute.git#bd2b2a4809af97bc75b00c99ee4f9976e9ed0e04"
+
 mkdirp@^0.5.1:
   version "0.5.5"
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.5.tgz#d91cefd62d1436ca0f41620e251288d420099def"

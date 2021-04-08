@@ -1,5 +1,5 @@
 import App from './AppYoutubeVideo.svelte';
-import EleAttr from './lib/ele-attr.js';
+import EleAttr from 'mk-data-attribute';
 
 // optional attribute: year
 const targets = document.querySelectorAll('[data-target="youtube-video"]');

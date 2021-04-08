@@ -5,13 +5,16 @@ import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import sveltePreprocess from 'svelte-preprocess';
 import { config } from 'dotenv';
-import replace from '@rollup/plugin-replace';import { terser } from 'rollup-plugin-terser';
+import replace from '@rollup/plugin-replace';
+import { terser } from 'rollup-plugin-terser';
 
 const production = !process.env.ROLLUP_WATCH;
 
 console.log('config.js production', production);
 
-const AWARDS_API_HOST = production ? 'https://api-auszeichnungen.fmh.de' : 'http://localhost:3001';
+// const AWARDS_API_HOST = production ? 'https://api-auszeichnungen.fmh.de' : 'http://localhost:3001';
+
+const AWARDS_API_HOST = 'https://api-auszeichnungen.fmh.de';
 
 console.log('AWARDS_API_HOST', AWARDS_API_HOST);
 

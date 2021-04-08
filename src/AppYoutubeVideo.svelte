@@ -22,7 +22,10 @@
         {caption}
       </a>
     {:else}
+      <span 
+        class="youtube-video__caption-text"> 
        {caption}
+     </span>
     {/if}   
   </caption>
 </div>
@@ -57,25 +60,30 @@
       border-radius: 4px;
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
+      border-bottom: none; 
       position: absolute;
       display: block;
       width: 100%;
       height: 100%;
     }
     &__caption {
+      margin: 0 10px 10px; 
+      display: block; 
+    }
+    &__caption-text,  &__caption-link {
       font-family: $font-family__primary;
       font-size: $font-size__primary;
-      box-shadow: 0px 4px 5px rgba(black, 0.3);  
+      padding: 1em;
       color: white;
-      padding: 0.25em 1em 1em;
       line-height: 1.3em;
       display: block;
       border-radius: 4px;
       border-top-left-radius: 0;
       border-top-right-radius: 0;
+      color: white;
+      background-color: rgba(white, 0.1); 
     }
     &__caption-link {
-      color: white;
       text-decoration: none;
       &:hover {
         text-decoration: underline;

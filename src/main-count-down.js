@@ -1,5 +1,5 @@
 import App from './AppCountDown.svelte';
-import EleAttr from './lib/ele-attr.js';
+import EleAttr from 'mk-data-attribute';
 
 //const delay = EleAttr('#count-down').int('delay', 0);
 

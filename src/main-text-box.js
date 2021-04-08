@@ -1,5 +1,5 @@
 import App from './AppTextBox.svelte';
-import EleAttr from './lib/ele-attr.js';
+import EleAttr from 'mk-data-attribute';
 
 const targets = document.querySelectorAll('[data-target="text-box"]');
 
