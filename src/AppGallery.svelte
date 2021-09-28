@@ -5,6 +5,7 @@
   axios.defaults.headers.common['Content-Type'] = 'application/json';
 
   export let year = new Date().getFullYear();
+  export let award = '';
   export let items = [];
   export let size = 'original';
   export let caption = '';
@@ -14,7 +15,7 @@
   const reqYear = year || new Date().getFullYear() - 1;
   let index = -1;
 
-  const url = `${process.env.AWARDS_API_HOST}/photos/fmh+award/awards/${reqYear}.json`;
+  const url = `${process.env.AWARDS_API_HOST}/photos/${award}/awards/${reqYear}.json`;
 
   function populateImage(index) {
     const item = items[index];
@@ -54,23 +55,27 @@
   });
 </script>
 
-<div class="gallery">
-  <figure class="gallery__figure">
-    <img
-      class="gallery__img"
-      src="{imgSrc}" 
-      alt="{imgAlt}" /> 
-    <div class="gallery__nav">
-      <a href="#blank" role="button"
-        on:click|preventDefault={prev} class="gallery__prev"><span/></a>
-      <a href="#blank" role="button"
-        on:click|preventDefault={next} class="gallery__next"><span/></a>
-    </div>
-    <figcaption class="gallery__figcaption">
-      {caption}
-    </figcaption>
-  </figure>
-</div>
+
+{#if (items && items.length) }
+  <div class="gallery">
+    <figure class="gallery__figure">
+      <img
+        class="gallery__img"
+        src="{imgSrc}" 
+        alt="{imgAlt}" /> 
+      <div class="gallery__nav">
+        <a href="#blank" role="button"
+          on:click|preventDefault={prev} class="gallery__prev"><span/></a>
+        <a href="#blank" role="button"
+          on:click|preventDefault={next} class="gallery__next"><span/></a>
+      </div>
+      <figcaption class="gallery__figcaption">
+        {caption}
+      </figcaption>
+    </figure>
+  </div>
+{/if}
+
 
 <style lang="scss">
   @import './css/colors.scss';
