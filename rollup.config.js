@@ -3,6 +3,8 @@ import gzipPlugin from 'rollup-plugin-gzip';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
+import scss from 'rollup-plugin-scss';
+import sassLoader from 'sass-loader';
 import sveltePreprocess from 'svelte-preprocess';
 import { config } from 'dotenv';
 import replace from '@rollup/plugin-replace';
@@ -61,7 +63,7 @@ function livereloadOnce(watchDir) {
 }
 
 
-
+console.log('config().parsed', config().parsed);
 
 const componentConfig = ({ input, out, cssOut }) => {
   return {
@@ -75,14 +77,20 @@ const componentConfig = ({ input, out, cssOut }) => {
     plugins: [
     
       replace({   
+        preventAssignment: true,
+        /* 
         process: JSON.stringify({
           env: {
             AWARDS_API_HOST,
             isProd: production,
             ...config().parsed
-          } 
-       }),
+          },
+       }),*/
+        'process.env.AWARDS_API_HOST': JSON.stringify(AWARDS_API_HOST),
+        'process.env.isProd': JSON.stringify(production),
+
       }),
+      scss(), 
       svelte({
         // enable run-time checks when not in production
         dev: !production,
@@ -159,6 +167,11 @@ export default [
     input:  'src/main-text-box.js',
     out: 'public/build/text-box.js',
     cssOut: 'text-box.css'
+  }),
+  componentConfig({
+    input:  'src/main-awards-table.js',
+    out: 'public/build/awards-table.js',
+    cssOut: 'awards-table.css'
   }),
   componentConfig({
     input:  'src/main-image-box.js',
