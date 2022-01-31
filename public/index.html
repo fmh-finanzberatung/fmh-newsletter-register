@@ -22,8 +22,8 @@
 	<script defer src="/build/awards-table.js"></script>
 	<link rel="stylesheet" href="/build/newsletter-register.css">
 	<script defer src="/build/newsletter-register.js"></script>
-	<!-- link rel="stylesheet" href="/build/count-down.css" -->
-	<!-- script defer src="/build/count-down.js"></script -->
+	<link rel="stylesheet" href="/build/count-down.css">
+	<script defer src="/build/count-down.js"></script>
 	<link rel="stylesheet" href="/build/random-laureates.css">
 	<script defer src="/build/random-laureates.js"></script>
 	<link rel="stylesheet" href="/build/gallery.css">
@@ -39,20 +39,27 @@
 </head>
 <body>
   <div class="layout">
+    <div data-target="awards-table"
+      class="layout__2" 
+      data-delay="500"
+      data-id="704"></div>
+    <!-- 767 -->
+    <div data-target="awards-table"
+      class="layout__2" 
+      data-delay="500"
+      data-id="783"></div>
+  </div>  
+  <div class="layout">
     <div id="gallery"
       class="layout__2"
       data-award="fmh+award"
       data-year="2021"></div>
-    <!--div class="layout__2" id="count-down"
-      data-year="2021"
-      data-month="1"
+    <div class="layout__2" id="count-down"
+      data-year="2022"
+      data-month="4"
       data-day="28"
       data-hour="11"
-      data-interval="5000"></div -->
-    <div data-target="awards-table"
-      class="layout__2" 
-      data-delay="500"
-      data-id="768"></div>
+      data-interval="5000"></div>
     <div id="random-laureates"
       class="layout__2" 
       data-delay="10000" 

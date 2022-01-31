@@ -17,7 +17,7 @@
     caption = item.title;
   }
   
-  const url = `${process.env.AWARDS_API_HOST}/photos/fmh+award/awards/${year}.json`;
+  const url = `${process.env.AWARDS_API_HOST}/photos/fmh+award/awards/${year - 1}.json`;
 
   axios.get(url)
     .then((res) => {
@@ -63,7 +63,7 @@
       alt={imgAlt} /> 
     <div class="countdown__canvas">
       <div class="countdown__content">
-        <h2 class="countdown__title">{title}</h2>
+        <h2 class="countdown__title">{title} {year}</h2>
         <ul class="countdown__counter">
           <li class="countdown__item"> 
             <div class="countdown__number"> 
@@ -104,13 +104,13 @@
   </div>
 </template>
 
-<style lang="scss">
+<style type="text/scss">
   @import './css/colors.scss';
   @import './css/fonts.scss';
   .countdown {
     border-radius: 4px;
     box-shadow: 0px 4px 5px rgba(black, 0.3);  
-    //background-color: rgba($color__primary--dark, 0.4); 
+    // background-color: rgba($color__primary--dark, 0.4); 
     width: 100%;
     height: 100%;
     position: relative;  

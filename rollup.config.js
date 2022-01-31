@@ -62,9 +62,6 @@ function livereloadOnce(watchDir) {
 
 }
 
-
-console.log('config().parsed', config().parsed);
-
 const componentConfig = ({ input, out, cssOut }) => {
   return {
     input,
@@ -137,6 +134,11 @@ export default [
     input:  'src/main-newsletter-register.js',
     out: 'public/build/newsletter-register.js',
     cssOut: 'newsletter-register.css'
+  }),
+  componentConfig({
+    input:  'src/main-awards-table.js',
+    out: 'public/build/awards-table.js',
+    cssOut: 'awards-table.css'
   }),
   componentConfig({
     input:  'src/main-count-down.js',

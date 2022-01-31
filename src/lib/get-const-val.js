@@ -8,10 +8,6 @@ function getConstVal(typesName, givenType) {
     throw new Error('No types map with name:', typesName); 
   }
 
-  console.log('typesName:', typesName);
-  console.log('givenType:', givenType);
-
-
   let filteredObjects = this[typesName].filter((obj) => {
 
     let objKey = Object.keys(obj)[0];

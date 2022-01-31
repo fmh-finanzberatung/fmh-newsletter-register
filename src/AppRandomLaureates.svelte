@@ -4,6 +4,7 @@
   axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
   import randomListInterval from './lib/random-list-interval'; 
+  import jpegFileName from './lib/jpeg-file-name.js'; 
   export let interval = 0;
   export let fromYear = 0;
   export let throughYear = 0;
@@ -23,11 +24,6 @@
   let size = 'big';
   let allLaureatesUrl = '';
 
-  function jpegFileName(fileName) {
-    if (!fileName) return '';
-    return fileName.replace(/gif$|png$/, 'jpg');
-  }
-
   function swap(randItem) {
 
     const imgFileName = jpegFileName(randItem.image_file_name);
@@ -37,7 +33,7 @@
     imgSrc = 
       `https://auszeichnungen.fmh.de/laureates/images/${randItem.id}/${size}/${randItem.file_hash}!${imgFileName}`;
     caption = randItem.bank.name;
-    allLaureatesUrl=`https://auszeichnungen.fmh.de/fmh-award/${randItem.commendation.volume.year}/preistraeger`; 
+    allLaureatesUrl=`https://www.fmh.de/auszeichnungen/preistraeger/fmh-award-${randItem.commendation.volume.year}`; 
   }
 
   axios.get(url)

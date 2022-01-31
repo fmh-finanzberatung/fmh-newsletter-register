@@ -4,10 +4,12 @@
 
 <template>
   <div class="text-box">
+    <!-- 
     <h2 class="text-box__title">
       <a href="/fmh-award/2021/preistraeger"
         class="text-box__link">FMH-Award 2021</a>
     </h2>
+    -->
     <p class="text-box__p">
       Für den FMH-Award 2021 haben wir uns etwas ganz Besonderes ausgedacht. 
       Zwar war es aufgrund der Corona-Pandemie und den daraus resultierenden
@@ -22,15 +24,15 @@
       Ergebnis sehen Sie in obigem Video. 
     </p>
     <p class="text-box__p">
-      <a href="/fmh-award/2021/preistraeger"
+      <a href="/auszeichnungen/preistraeger/fmh-award-2021"
         class="text-box__link">
         Die Gewinner des FMH-Awards 2021 finden Sie hier:
       </a>
     </p>
     <p class="text-box__p">
-      <a href="/fmh-award/2021/preistraeger"
+      <a href="/auszeichnungen/preistraeger/fmh-award-2021"
         class="text-box__button">
-        zu den Gewinnern 
+        Zu den Gewinnern
       </a>
     </p>
   </div>
