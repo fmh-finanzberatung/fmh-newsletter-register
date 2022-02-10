@@ -161,6 +161,11 @@ export default [
     cssOut: 'article-teasers.css'
   }),
   componentConfig({
+    input:  'src/main-topic-segments.js',
+    out: 'public/build/topic-segments.js',
+    cssOut: 'topic-segments.css'
+  }),
+  componentConfig({
     input:  'src/main-youtube-video.js',
     out: 'public/build/youtube-video.js',
     cssOut: 'youtube-video.css'

@@ -3,7 +3,6 @@ import EleAttr from 'mk-data-attribute';
 
 const targets = document.querySelectorAll('[data-target="text-box"]');
 
-console.log('targets', targets);
 for (let i = 0, l = targets.length; i < l; i++) {
   const target = targets[i];
   const ele = EleAttr(target);

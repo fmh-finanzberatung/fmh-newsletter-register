@@ -10,8 +10,6 @@ const throughYear = ele.int('throughYear', 0);
 const delay = ele.int('delay',0);
 const interval = ele.int('interval', 3000);
 
-console.log('random-laureates delay:', delay); 
-
 setTimeout(() => {
   
   new App({
