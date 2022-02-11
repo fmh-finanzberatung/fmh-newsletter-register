@@ -4,9 +4,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import scss from 'rollup-plugin-scss';
-import sassLoader from 'sass-loader';
 import sveltePreprocess from 'svelte-preprocess';
-import { config } from 'dotenv';
 import replace from '@rollup/plugin-replace';
 import { terser } from 'rollup-plugin-terser';
 
@@ -130,6 +128,11 @@ const componentConfig = ({ input, out, cssOut }) => {
 };
 
 export default [
+  componentConfig({
+    input:  'src/main-b2b-banner.js',
+    out: 'public/build/b2b-banner.js',
+    cssOut: 'b2b-banner.css'
+  }),
   componentConfig({
     input:  'src/main-newsletter-register.js',
     out: 'public/build/newsletter-register.js',
