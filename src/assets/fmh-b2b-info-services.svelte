@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
 <svg width="77px" height="76px" viewBox="0 0 77 76" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <title>Info-Services</title>
   <g id="Info-Services" transform="matrix(1, 0, 0, 1, 0.833313, 0)" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
     <polygon id="Path-Copy-2" points="0.166666667 0 76.1666667 0 76.1666667 76 0.166666667 76"/>
     <g id="Desktop" transform="translate(0.000000, 8.000000)" fill="#1194DB">

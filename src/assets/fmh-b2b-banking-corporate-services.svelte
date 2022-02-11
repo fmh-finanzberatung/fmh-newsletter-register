@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
 <svg width="76px" height="76px" viewBox="0 0 76 76" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <title>Banking &amp; Corporate Services</title>
   <g id="Banking-&amp;-Corporate-Services" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
     <polygon id="Path-Copy-2" points="0 0 76 0 76 76 0 76"/>
     <path d="M70,19 L70,57 L38.5,57 L38.5,50.5 L64.5,50.5 L64.5,24.5 L38.5,24.5 L38.5,19 L70,19 Z M59.5,40.5 L59.5,45.5 L54,45.5 L54,40.5 L59.5,40.5 Z M49,40.5 L49,45.5 L43.5,45.5 L43.5,40.5 L49,40.5 Z M59.5,30 L59.5,35 L54,35 L54,30 L59.5,30 Z M49,30 L49,35 L43.5,35 L43.5,30 L49,30 Z" id="Combined-Shape" fill="#1194DB"/>

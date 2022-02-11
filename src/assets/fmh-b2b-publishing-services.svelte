@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <svg width="76px" height="76px" viewBox="0 0 76 76" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <title>Pubilshing Services</title>
   <g id="Pubilshing-Services" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
