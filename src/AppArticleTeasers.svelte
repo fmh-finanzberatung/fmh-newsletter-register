@@ -69,7 +69,7 @@
   </div>
 </template>
 
-<style lang="scss">
+<style type="text/scss">
   @import './css/colors.scss';
   @import './css/fonts.scss';
   .article-teasers {
@@ -146,6 +146,5 @@
     &__more {
       font-weight: 500; 
     }
-
   }
 </style>

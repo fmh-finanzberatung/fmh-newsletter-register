@@ -171,7 +171,7 @@
       color: white;
       background-color: $color__primary--light;
       border-radius: 4px; 
-    } 
+    }
     &__number, &__label {
       font-weight: normal;
       text-align: center;

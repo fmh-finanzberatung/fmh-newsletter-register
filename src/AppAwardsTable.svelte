@@ -217,7 +217,7 @@
   </IntersectionObserver>
 </template>
 
-<style lang="scss">
+<style type="text/scss">
   @import './css/colors.scss';
   @import './css/fonts.scss';
   .awards-table {
