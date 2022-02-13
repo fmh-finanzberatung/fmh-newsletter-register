@@ -1,5 +1,5 @@
 <svg width="76px" height="76px" viewBox="0 0 76 76" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <g id="Banking-&amp;-Corporate-Services" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+  <g id="Banking-Corporate-Services" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
     <polygon id="Path-Copy-2" points="0 0 76 0 76 76 0 76"/>
     <path d="M70,19 L70,57 L38.5,57 L38.5,50.5 L64.5,50.5 L64.5,24.5 L38.5,24.5 L38.5,19 L70,19 Z M59.5,40.5 L59.5,45.5 L54,45.5 L54,40.5 L59.5,40.5 Z M49,40.5 L49,45.5 L43.5,45.5 L43.5,40.5 L49,40.5 Z M59.5,30 L59.5,35 L54,35 L54,30 L59.5,30 Z M49,30 L49,35 L43.5,35 L43.5,30 L49,30 Z" id="Combined-Shape" fill="#1194DB"/>
     <path d="M44.5,8 L44.5,57 L6,57 L6,8 L44.5,8 Z M38.5,45.5 L33,45.5 L33,51 L38.5,51 L38.5,45.5 Z M28,45.5 L22.5,45.5 L22.5,51 L28,51 L28,45.5 Z M17.5,45.5 L12,45.5 L12,51 L17.5,51 L17.5,45.5 Z M38.5,35 L33,35 L33,40.5 L38.5,40.5 L38.5,35 Z M28,35 L22.5,35 L22.5,40.5 L28,40.5 L28,35 Z M17.5,35 L12,35 L12,40.5 L17.5,40.5 L17.5,35 Z M38.5,24.5 L33,24.5 L33,30 L38.5,30 L38.5,24.5 Z M28,24.5 L22.5,24.5 L22.5,30 L28,30 L28,24.5 Z M17.5,24.5 L12,24.5 L12,30 L17.5,30 L17.5,24.5 Z M38.5,14 L33,14 L33,19.5 L38.5,19.5 L38.5,14 Z M28,14 L22.5,14 L22.5,19.5 L28,19.5 L28,14 Z M17.5,14 L12,14 L12,19.5 L17.5,19.5 L17.5,14 Z" id="Combined-Shape" fill="#1194DB"/>
