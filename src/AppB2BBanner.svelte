@@ -239,7 +239,7 @@
   }
 
   // max-width must include 40px of left (20px) and right (20px) margin
-  @media (max-width: 520px) {
+  @media (max-width: 600px) {
     .b2b-banner {
       margin-right: 10px;
       margin-left: 10px;
@@ -254,13 +254,14 @@
         //overflow-x: scroll;
       }
       &__slider-list {
-        scroll-snap-type: block x proximity;
+        scroll-snap-type: x proximity;
         padding-left: 425px;
         margin-right: 40px;
         overflow-x: scroll;
       }
       &__slider-item {
         min-width: 200px;
+        scroll-snap-align: center;
       }
       &__slider-handle {
         height: 100%;
