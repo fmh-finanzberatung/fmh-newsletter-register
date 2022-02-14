@@ -187,5 +187,10 @@ export default [
     input:  'src/main-image-box.js',
     out: 'public/build/image-box.js',
     cssOut: 'image-box.css'
+  }),
+  componentConfig({
+    input:  'src/main-directory.js',
+    out: 'public/build/directory.js',
+    cssOut: 'directory.css'
   })
 ];

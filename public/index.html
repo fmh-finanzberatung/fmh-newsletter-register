@@ -1,115 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-    }
-    .layout {
-      display: flex;
-      flex-flow: row wrap; 
-      align-content: space-around;
-      gap: 10px; 
-    }
-    .layout__2 {
-      flex: 1 1 600px; 
-    }
-    .layout__3x2 {
-      flex: 1 1 400px; 
-    }
-    .layout > * {
-      min-width: 300px;
-      max-width: 600px; 
-    } 
-  </style>
-	<title>Svelte app</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet"> 
-	<link rel="icon" type="image/png" href="/favicon.png">
-	<link rel="stylesheet" href="/build/b2b-banner.css">
-	<script defer src="/build/b2b-banner.js"></script>
-	<link rel="stylesheet" href="/build/topic-segments.css">
-	<script defer src="/build/topic-segments.js"></script>
-	<link rel="stylesheet" href="/build/awards-table.css">
-	<script defer src="/build/awards-table.js"></script>
-	<link rel="stylesheet" href="/build/newsletter-register.css">
-	<script defer src="/build/newsletter-register.js"></script>
-	<link rel="stylesheet" href="/build/count-down.css">
-	<script defer src="/build/count-down.js"></script>
-	<link rel="stylesheet" href="/build/random-laureates.css">
-	<script defer src="/build/random-laureates.js"></script>
-	<link rel="stylesheet" href="/build/gallery.css">
-	<script defer src="/build/gallery.js"></script>
-	<link rel="stylesheet" href="/build/article-teasers.css">
-	<script defer src="/build/article-teasers.js"></script>
-	<link rel="stylesheet" href="/build/youtube-video.css">
-	<script defer src="/build/youtube-video.js"></script>
-	<link rel="stylesheet" href="/build/text-box.css">
-	<script defer src="/build/text-box.js"></script>
-	<link rel="stylesheet" href="/build/image-box.css">
-	<script defer src="/build/image-box.js"></script>
-</head>
-<body>
-  <div id="b2b-banner"></div>
-  <div class="layout">
-    <div data-target="awards-table"
-      class="layout__2" 
-      data-delay="500"
-      data-id="704"></div>
-    <!-- 767 -->
-    <div data-target="awards-table"
-      class="layout__2" 
-      data-delay="500"
-      data-id="783"></div>
-  </div>  
-  <div class="layout">
-    <div id="gallery"
-      class="layout__2"
-      data-award="fmh+award"
-      data-year="2021"></div>
-    <div class="layout__2" id="count-down"
-      data-year="2022"
-      data-month="4"
-      data-day="28"
-      data-hour="11"
-      data-interval="5000"></div>
-    <div id="random-laureates"
-      class="layout__2" 
-      data-delay="10000" 
-      data-interval="3000"
-      data-from-year="2020"
-      data-through-year="2020"></div>
-    <div class="layout__2"
-      data-year="2021" 
-      data-target="text-box"></div>
-    <div class="layout__2"
-      id="newsletter-register"></div>
-    <div id="article-teasers"
-      class="layout__2"
-      data-keyword="fmh-award"
-      data-page-size="2" 
-      data-url="https://www.fmh.de/api/topics/keyword-articles"></div>
-    <div data-target="youtube-video"
-      class="layout__2" 
-      data-src="https://www.youtube-nocookie.com/embed/nZI-YE2YOHQ"
-      data-caption="Some Text Item 1"
-      data-caption-link="https://link1"></div>
-    <div data-target="youtube-video"
-      class="layout__2" 
-      data-src="https://www.youtube-nocookie.com/embed/ljJzhZolC1U"
-      data-caption="Some Text Item 2"
-      data-caption-link="https://link2"></div>
-    <div data-target="image-box"
-      class="layout__2" 
-      data-img-url="https://www.fmh.de/resources/assets/1633/special/5d46ae854f41cda954172d314dc736d60cce1b05-drklein_privatkunden.jpg"
-      data-blow-up-url="https://www.fmh.de/resources/assets/1633/original/5d46ae854f41cda954172d314dc736d60cce1b05-drklein_privatkunden.jpg"
-      data-caption="Some Text Item 2"
-      data-caption-link="https://link2"></div>
-    <div data-target="topic-segments"
-      data-class="layout"
-      data-topic-id="323"></div>
-  </div>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .layout {
+        margin-right: auto;
+        margin-left: auto;
+        max-width: 1210px;
+        display: flex;
+        flex-flow: row wrap;
+        align-content: space-around;
+        gap: 10px;
+      }
+      .layout__2 {
+        flex: 1 1 600px;
+      }
+      .layout__3x2 {
+        flex: 1 1 400px;
+      }
+      .layout > * {
+        min-width: 300px;
+        max-width: 600px;
+      }
+    </style>
+    <title>FMH-Components</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="stylesheet" href="/build/directory.css" />
+    <script defer src="/build/directory.js"></script>
+    <link rel="stylesheet" href="/build/b2b-banner.css" />
+    <script defer src="/build/b2b-banner.js"></script>
+    <link rel="stylesheet" href="/build/topic-segments.css" />
+    <script defer src="/build/topic-segments.js"></script>
+    <link rel="stylesheet" href="/build/awards-table.css" />
+    <script defer src="/build/awards-table.js"></script>
+    <link rel="stylesheet" href="/build/newsletter-register.css" />
+    <script defer src="/build/newsletter-register.js"></script>
+    <link rel="stylesheet" href="/build/count-down.css" />
+    <script defer src="/build/count-down.js"></script>
+    <link rel="stylesheet" href="/build/random-laureates.css" />
+    <script defer src="/build/random-laureates.js"></script>
+    <link rel="stylesheet" href="/build/gallery.css" />
+    <script defer src="/build/gallery.js"></script>
+    <link rel="stylesheet" href="/build/article-teasers.css" />
+    <script defer src="/build/article-teasers.js"></script>
+    <link rel="stylesheet" href="/build/youtube-video.css" />
+    <script defer src="/build/youtube-video.js"></script>
+    <link rel="stylesheet" href="/build/text-box.css" />
+    <script defer src="/build/text-box.js"></script>
+    <link rel="stylesheet" href="/build/image-box.css" />
+    <script defer src="/build/image-box.js"></script>
+  </head>
+  <body>
+    <div id="directory"></div>
+    <div id="b2b-banner" data-dir="B2B-Banner"></div>
+    <div class="layout">
+      <div
+        data-target="awards-table"
+        data-dir="FMH Table Plain "
+        class="layout__2"
+        data-delay="500"
+        data-id="704"
+      ></div>
+      <!-- 767 -->
+      <div
+        data-target="awards-table"
+        data-dir="FMH Table with Commendation"
+        class="layout__2"
+        data-delay="500"
+        data-id="783"
+      ></div>
+    </div>
+    <div class="layout">
+      <div
+        id="gallery"
+        class="layout__2"
+        data-award="fmh+award"
+        data-year="2021"
+        data-dir="Image Gallery"
+      ></div>
+      <div
+        class="layout__2"
+        id="count-down"
+        data-year="2022"
+        data-month="4"
+        data-day="28"
+        data-hour="11"
+        data-interval="5000"
+        data-dir="Countdown"
+      ></div>
+      <div
+        id="random-laureates"
+        class="layout__2"
+        data-delay="10000"
+        data-interval="3000"
+        data-from-year="2020"
+        data-through-year="2020"
+        data-dir="Random Commendations"
+      ></div>
+      <div
+        class="layout__2"
+        data-year="2021"
+        data-target="text-box"
+        data-dir="Simple Textbox"
+      ></div>
+      <div
+        class="layout__2"
+        id="newsletter-register"
+        data-dir="Newsletter Registration"
+      ></div>
+      <div
+        id="article-teasers"
+        class="layout__2"
+        data-keyword="fmh-award"
+        data-page-size="2"
+        data-dir="Article Teasers"
+        data-url="https://www.fmh.de/api/topics/keyword-articles"
+      ></div>
+    </div>
+    <div class="layout" data-dir="Youtube embedded">
+      <div
+        data-target="youtube-video"
+        class="layout__2"
+        data-src="https://www.youtube-nocookie.com/embed/nZI-YE2YOHQ"
+        data-caption="Some Text Item 1"
+        data-caption-link="https://link1"
+      ></div>
+      <div
+        data-target="youtube-video"
+        class="layout__2"
+        data-src="https://www.youtube-nocookie.com/embed/ljJzhZolC1U"
+        data-caption="Some Text Item 2"
+        data-caption-link="https://link2"
+      ></div>
+    </div>
+    <div class="layout">
+      <div
+        data-dir="Simple Image Box"
+        data-target="image-box"
+        class="layout__2"
+        data-img-url="https://www.fmh.de/resources/assets/1633/special/5d46ae854f41cda954172d314dc736d60cce1b05-drklein_privatkunden.jpg"
+        data-blow-up-url="https://www.fmh.de/resources/assets/1633/original/5d46ae854f41cda954172d314dc736d60cce1b05-drklein_privatkunden.jpg"
+        data-caption="Some Text Item 2"
+        data-caption-link="https://link2"
+      ></div>
+      <div
+        data-dir="Calculator Topic Segments"
+        data-target="topic-segments"
+        data-class="layout"
+        data-topic-id="323"
+      ></div>
+    </div>
+  </body>
 </html>

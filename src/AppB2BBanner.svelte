@@ -209,6 +209,7 @@
       }
     }
     &__slider-handle {
+      background-color: $color__primary--lighter;
       height: 0;
       overflow-y: hidden;
       width: 60px;
