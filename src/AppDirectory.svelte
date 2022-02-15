@@ -1,8 +1,8 @@
 <script>
   const DirPosTop = true;
   const DirPosLeft = true;
-  const DirPosBottom = false;
-  const DirPosRight = false;
+//  const DirPosBottom = false;
+//  const DirPosRight = false;
   export let folders;
 
   let vertDirPos = DirPosTop;
@@ -30,14 +30,16 @@
     horDirPos = !horDirPos;
   }
 
-  function showAll() {
+function showAll(ev) {
+  ev.preventDefault();
     dirItems.forEach((f) => {
       f.style.height = "auto";
       f.style.overflowY = "auto";
     });
   }
 
-  function showNone() {
+  function showNone(ev) {
+    ev.preventDefault();
     dirItems.forEach((f) => {
       f.style.height = "0px";
       f.style.overflowY = "hidden";
@@ -90,12 +92,12 @@
       <a
         href="#"
         class="directory__show directory__show--all"
-        on:click={() => showAll()}>Show All</a
+        on:click={showAll}>Show All</a
       >
       <a
         href="#"
         class="directory__show directory__show--none"
-        on:click={() => showNone()}>Show None</a
+        on:click={showNone}>Show None</a
       >
     </div>
   </nav>
