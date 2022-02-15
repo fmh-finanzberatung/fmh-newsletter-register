@@ -204,11 +204,11 @@
       border-bottom: 1px solid rgba($color__primary, 0.5);
       font-family: $font-family__primary;
       &--selected {
-        background-color: rgba($color__primary, 0.1);
+        background-color: rgba($color__primary, 0.9);
         color: white;
       }
       &:hover {
-        background-color: rgba($color__primary, 0.9);
+        background-color: rgba($color__primary, 0.1);
         color: white;
       }
       &:last-child {
