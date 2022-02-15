@@ -1,4 +1,7 @@
 <script>
+  const SlideDirectionLeft = "left";
+  const SlideDirectionRight = "right";
+
   import BankingIcon from "./assets/fmh-b2b-banking-corporate-services.svelte";
   import InfoIcon from "./assets/fmh-b2b-info-services.svelte";
   import PressServicesIcon from "./assets/fmh-b2b-press-services.svelte";
@@ -7,6 +10,28 @@
 
   function imgUrl(size) {
     return `https://www.fmh.de/resources/assets/1762/${size}/c8c2ac41cdecb1817a0e9f7b51efbe6ad78747cc-burning-planet.jpg`;
+  }
+
+  function slide(ev, slideDirection) {
+    const sliderContainer = document
+    if (slideDirection === SlideDirectionLeft) {
+      return {
+        transform: "translateX(-100%)",
+        transition: "transform 0.5s ease-in-out",
+      };
+    } else if (slideDirection === SlideDirectionRight) {
+      return {
+        transform: "translateX(100%)",
+        transition: "transform 0.5s ease-in-out",
+      };
+    }
+  }
+
+  function slideLeft(ev) {
+    return slide(ev, SlideDirectionLeft);
+  }
+  function slideRight(ev) {
+    return slide(ev, SlideDirectionRight);
   }
 </script>
 
@@ -48,7 +73,9 @@
           </li>
           <li class="b2b-banner__slider-item">
             <PublishingServicesIcon />
-            <span class="b2b-banner__slider-caption"> Publishing Services </span>
+            <span class="b2b-banner__slider-caption">
+              Publishing Services
+            </span>
           </li>
           <li class="b2b-banner__slider-item">
             <PressServicesIcon />
@@ -59,12 +86,18 @@
             <span class="b2b-banner__slider-caption"> Info-Services </span>
           </li>
         </ul>
-        <div class="b2b-banner__slider-handle b2b-banner__slider-handle--left">
+        <div
+          class="b2b-banner__slider-handle b2b-banner__slider-handle--left"
+          on:click={slideLeft}
+        >
           <div class="b2b-banner__slider-handle-icon">
             <ChevronLeftIcon />
           </div>
         </div>
-        <div class="b2b-banner__slider-handle b2b-banner__slider-handle--right">
+        <div
+          class="b2b-banner__slider-handle b2b-banner__slider-handle--right"
+          on:click={slideRight}
+        >
           <div class="b2b-banner__slider-handle-icon">
             <ChevronLeftIcon flip="true" />
           </div>
@@ -79,17 +112,16 @@
   @import "./css/colors.scss";
   @import "./css/fonts.scss";
   .b2b-banner {
-
     margin: 0 auto;
     box-sizing: border-box;
-    
+
     & * {
       padding: 0;
       box-sizing: border-box;
       margin: 0;
       border: 0;
     }
-      
+
     padding: 0 20px;
     &__wrapper {
       padding: 30px 0 0 0;
@@ -181,7 +213,7 @@
     &__slider {
       margin: auto 0 0 0;
       position: relative;
-      width: 100%;
+      //width: 100%;
       background-color: $color__primary--lighter;
     }
     &__slider-list {
@@ -248,7 +280,7 @@
   // max-width must include 40px of left (20px) and right (20px) margin
   @media (max-width: 600px) {
     .b2b-banner {
-      padding: 0; 
+      padding: 0;
       &__box {
         margin-left: auto;
         margin-right: auto;
@@ -260,14 +292,23 @@
         //overflow-x: scroll;
       }
       &__slider-list {
-        scroll-snap-type: x proximity;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;  /* IE 10+ * */
+        -webkit-overflow-scrolling: touch; 
+        &::-webkit-scrollbar {
+          background:  transparent;
+          width: 0px;
+        }
+        scroll-snap-type: x mandatory;
         padding-left: 425px;
         margin-right: 40px;
         overflow-x: scroll;
       }
       &__slider-item {
         min-width: 200px;
-        scroll-snap-align: center;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        //scroll-snap-align: center;
       }
       &__slider-handle {
         height: 100%;
