@@ -120,7 +120,7 @@
     &__corner {
       width: 2.5rem;
       position: absolute;
-      top: 0.5rem;
+      top: 0.6rem;
       right: 1.5rem;
       display: flex;
       flex-flow: row wrap;
@@ -236,7 +236,6 @@
       text-decoration: none;
       &:hover {
         color: white;
-        text-decoration: underline;
       }
     }
   }
