@@ -11,9 +11,6 @@ const devHost = ele.str('devHost', '');
 
 setTimeout(() => {
 
-  console.log('devHost', devHost);
-  console.log('window.location.href', window.location.href);
-  console.log(window.location.href.indexOf(devHost));
   if (window.location.href.indexOf(devHost) !== -1) {
     console.log(`Component Viewer is not active because devHost ${devHost} is in the url`);
     console.log(`Component Viewer not visible in development`);
