@@ -12,60 +12,62 @@
 
 <template>
   <div class="b2b-banner">
-    <picture class="b2b-banner__picture">
-      <source media="(max-width: 799px)" srcset={imgUrl("giant")} />
-      <source media="(min-width: 800px)" srcset={imgUrl("original")} />
-      <img
-        class="b2b-banner__img"
-        src={imgUrl("original")}
-        alt="FMH Firmenkunden"
-        loading="lazy"
-        width="800"
-        height="320"
-      />
-    </picture>
-    <div class="b2b-banner__box">
-      <span class="b2b-banner__box-question"> Schon gewusst? </span>
-      <span class="b2b-banner__box-answer">
-        Mehr als 300 europäische Unternehmen nutzen bereits unsere Daten und
-        Services für ihren Erfolg.
-      </span>
-      <span class="b2b-banner__box-can-we-help">
-        Was können wir für Sie tun?
-      </span>
-      <a class="b2b-banner__box-link" href="https://www.fmh.de/b2b/">
-        Jetzt beraten lassen
-      </a>
-    </div>
-    <div class="b2b-banner__slider">
-      <ul class="b2b-banner__slider-list" dir="ltr">
-        <li class="b2b-banner__slider-item">
-          <BankingIcon />
-          <span class="b2b-banner__slider-caption">
-            Banking & Corporate<br />Services
-          </span>
-        </li>
-        <li class="b2b-banner__slider-item">
-          <PublishingServicesIcon />
-          <span class="b2b-banner__slider-caption"> Publishing Services </span>
-        </li>
-        <li class="b2b-banner__slider-item">
-          <PressServicesIcon />
-          <span class="b2b-banner__slider-caption"> Presse-Services </span>
-        </li>
-        <li class="b2b-banner__slider-item">
-          <InfoIcon />
-          <span class="b2b-banner__slider-caption"> Info-Services </span>
-        </li>
-      </ul>
-      <div class="b2b-banner__slider-handle b2b-banner__slider-handle--left">
-        <div class="b2b-banner__slider-handle-icon">
-          <ChevronLeftIcon />
-        </div>
+    <div class="b2b-banner__wrapper">
+      <picture class="b2b-banner__picture">
+        <source media="(max-width: 799px)" srcset={imgUrl("giant")} />
+        <source media="(min-width: 800px)" srcset={imgUrl("original")} />
+        <img
+          class="b2b-banner__img"
+          src={imgUrl("original")}
+          alt="FMH Firmenkunden"
+          loading="lazy"
+          width="800"
+          height="320"
+        />
+      </picture>
+      <div class="b2b-banner__box">
+        <span class="b2b-banner__box-question"> Schon gewusst? </span>
+        <span class="b2b-banner__box-answer">
+          Mehr als 300 europäische Unternehmen nutzen bereits unsere Daten und
+          Services für ihren Erfolg.
+        </span>
+        <span class="b2b-banner__box-can-we-help">
+          Was können wir für Sie tun?
+        </span>
+        <a class="b2b-banner__box-link" href="https://www.fmh.de/b2b/">
+          Jetzt beraten lassen
+        </a>
       </div>
-      <div class="b2b-banner__slider-handle b2b-banner__slider-handle--right">
-        <div class="b2b-banner__slider-handle-icon">
-          <ChevronLeftIcon flip="true" />
+      <div class="b2b-banner__slider">
+        <ul class="b2b-banner__slider-list" dir="ltr">
+          <li class="b2b-banner__slider-item">
+            <BankingIcon />
+            <span class="b2b-banner__slider-caption">
+              Banking & Corporate<br />Services
+            </span>
+          </li>
+          <li class="b2b-banner__slider-item">
+            <PublishingServicesIcon />
+            <span class="b2b-banner__slider-caption"> Publishing Services </span>
+          </li>
+          <li class="b2b-banner__slider-item">
+            <PressServicesIcon />
+            <span class="b2b-banner__slider-caption"> Presse-Services </span>
+          </li>
+          <li class="b2b-banner__slider-item">
+            <InfoIcon />
+            <span class="b2b-banner__slider-caption"> Info-Services </span>
+          </li>
+        </ul>
+        <div class="b2b-banner__slider-handle b2b-banner__slider-handle--left">
+          <div class="b2b-banner__slider-handle-icon">
+            <ChevronLeftIcon />
+          </div>
+        </div>
+        <div class="b2b-banner__slider-handle b2b-banner__slider-handle--right">
+          <div class="b2b-banner__slider-handle-icon">
+            <ChevronLeftIcon flip="true" />
+          </div>
         </div>
       </div>
     </div>
@@ -77,23 +79,26 @@
   @import "./css/colors.scss";
   @import "./css/fonts.scss";
   .b2b-banner {
-    & {
-      padding: 30px 0 0 0;
-    }
+
+    margin: 0 auto;
+    box-sizing: border-box;
+    
     & * {
       padding: 0;
-    }
-    &,
-    & * {
       box-sizing: border-box;
       margin: 0;
       border: 0;
     }
-    overflow: hidden;
-    position: relative;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    max-width: 1210px;
+      
+    padding: 0 20px;
+    &__wrapper {
+      padding: 30px 0 0 0;
+      overflow: hidden;
+      position: relative;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 1210px;
+    }
     &__box {
       position: relative;
       max-width: 480px;
@@ -225,7 +230,8 @@
       }
       &:hover {
         cursor: pointer;
-        background-color: rgba(black, 0.18);
+        // background-color: rgba(black, 0.18);
+        background-color: $color__primary--dark;
       }
     }
     &__slider-handle-icon {
@@ -242,11 +248,10 @@
   // max-width must include 40px of left (20px) and right (20px) margin
   @media (max-width: 600px) {
     .b2b-banner {
-      margin-right: 10px;
-      margin-left: 10px;
+      padding: 0; 
       &__box {
-        margin-left: 20px;
-        margin-right: 20px;
+        margin-left: auto;
+        margin-right: auto;
       }
       &__img {
         margin-left: 0;
