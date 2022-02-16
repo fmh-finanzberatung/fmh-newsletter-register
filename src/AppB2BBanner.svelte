@@ -1,30 +1,38 @@
 <script>
-  const SlideDirectionLeft = "left";
-  const SlideDirectionRight = "right";
+  let slider = null;
+  const SlideDirectionLeft = 'left';
+  const SlideDirectionRight = 'right';
 
-  import BankingIcon from "./assets/fmh-b2b-banking-corporate-services.svelte";
-  import InfoIcon from "./assets/fmh-b2b-info-services.svelte";
-  import PressServicesIcon from "./assets/fmh-b2b-press-services.svelte";
-  import PublishingServicesIcon from "./assets/fmh-b2b-publishing-services.svelte";
-  import ChevronLeftIcon from "./assets/chevron-left.svelte";
+  import BankingIcon from './assets/fmh-b2b-banking-corporate-services.svelte';
+  import InfoIcon from './assets/fmh-b2b-info-services.svelte';
+  import PressServicesIcon from './assets/fmh-b2b-press-services.svelte';
+  import PublishingServicesIcon from './assets/fmh-b2b-publishing-services.svelte';
+  import ChevronLeftIcon from './assets/chevron-left.svelte';
 
   function imgUrl(size) {
     return `https://www.fmh.de/resources/assets/1762/${size}/c8c2ac41cdecb1817a0e9f7b51efbe6ad78747cc-burning-planet.jpg`;
   }
 
+  function onScroll(e) {
+    //console.log(e);
+  }
+
+  function avgItemWidth(parentNode) {
+    const tagChildren = [...parentNode.childNodes].filter((n) => n.tagName);
+    return (
+      tagChildren.reduce((sum, child) => sum + child.clientWidth, 0) /
+      tagChildren.length
+    );
+  }
+
   function slide(ev, slideDirection) {
-    const sliderContainer = document
+    let scrollWidth = avgItemWidth(slider) + 200;
     if (slideDirection === SlideDirectionLeft) {
-      return {
-        transform: "translateX(-100%)",
-        transition: "transform 0.5s ease-in-out",
-      };
-    } else if (slideDirection === SlideDirectionRight) {
-      return {
-        transform: "translateX(100%)",
-        transition: "transform 0.5s ease-in-out",
-      };
+      slider.scrollLeft -= scrollWidth;
+      return true;
     }
+    slider.scrollLeft += scrollWidth;
+    return true;
   }
 
   function slideLeft(ev) {
@@ -39,11 +47,11 @@
   <div class="b2b-banner">
     <div class="b2b-banner__wrapper">
       <picture class="b2b-banner__picture">
-        <source media="(max-width: 799px)" srcset={imgUrl("giant")} />
-        <source media="(min-width: 800px)" srcset={imgUrl("original")} />
+        <source media="(max-width: 799px)" srcset={imgUrl('giant')} />
+        <source media="(min-width: 800px)" srcset={imgUrl('original')} />
         <img
           class="b2b-banner__img"
-          src={imgUrl("original")}
+          src={imgUrl('original')}
           alt="FMH Firmenkunden"
           loading="lazy"
           width="800"
@@ -64,11 +72,16 @@
         </a>
       </div>
       <div class="b2b-banner__slider">
-        <ul class="b2b-banner__slider-list" dir="ltr">
+        <ul
+          class="b2b-banner__slider-list"
+          dir="ltr"
+          bind:this={slider}
+          on:scroll={onScroll}
+        >
           <li class="b2b-banner__slider-item">
             <BankingIcon />
             <span class="b2b-banner__slider-caption">
-              Banking & Corporate<br />Services
+              F&uuml;r Banken 
             </span>
           </li>
           <li class="b2b-banner__slider-item">
@@ -108,9 +121,10 @@
 </template>
 
 <style type="text/scss">
-  @import "./css/buttons.scss";
-  @import "./css/colors.scss";
-  @import "./css/fonts.scss";
+  @import './css/buttons.scss';
+  @import './css/colors.scss';
+  @import './css/fonts.scss';
+  $handleWidth: 60px;
   .b2b-banner {
     margin: 0 auto;
     box-sizing: border-box;
@@ -217,11 +231,14 @@
       background-color: $color__primary--lighter;
     }
     &__slider-list {
+      position: relative;
       justify-content: space-evenly;
       list-style: none;
       display: flex;
     }
     &__slider-item {
+      position: relative;
+      //border: 1px solid red;
       letter-spacing: 0.025em;
       padding: 12px 0;
       text-align: center;
@@ -249,7 +266,7 @@
       background-color: $color__primary--lighter;
       height: 0;
       overflow-y: hidden;
-      width: 60px;
+      width: $handleWidth;
       position: absolute;
       top: 0;
       cursor: pointer;
@@ -271,14 +288,14 @@
       transform: translateY(20%);
       position: absolute;
       top: 0;
-      transform: translateY(65%);
+      transform: translateY(50%);
       width: $dim;
       height: $dim;
     }
   }
 
   // max-width must include 40px of left (20px) and right (20px) margin
-  @media (max-width: 600px) {
+  @media (max-width: 640px) {
     .b2b-banner {
       padding: 0;
       &__box {
@@ -290,25 +307,29 @@
       }
       &__slider {
         //overflow-x: scroll;
+        white-space: nowrap;
       }
-      &__slider-list {
+        &__slider-list {
+          gap: 0;
+        justify-content: space-between;
+        // indent left by width of handle
+        margin-left: $handleWidth;
+        margin-right: $handleWidth;
         scrollbar-width: none; /* Firefox */
-        -ms-overflow-style: none;  /* IE 10+ * */
-        -webkit-overflow-scrolling: touch; 
+        -ms-overflow-style: none; /* IE 10+ * */
+        -webkit-overflow-scrolling: touch;
         &::-webkit-scrollbar {
-          background:  transparent;
+          background: transparent;
           width: 0px;
+          height: 0px;
         }
         scroll-snap-type: x mandatory;
-        padding-left: 425px;
-        margin-right: 40px;
         overflow-x: scroll;
       }
       &__slider-item {
         min-width: 200px;
-        scroll-snap-align: start;
+        scroll-snap-align: start;  // center
         scroll-snap-stop: always;
-        //scroll-snap-align: center;
       }
       &__slider-handle {
         height: 100%;
