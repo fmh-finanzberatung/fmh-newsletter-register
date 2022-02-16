@@ -1,25 +1,28 @@
 <script>
   const DirPosTop = true;
   const DirPosLeft = true;
-//  const DirPosBottom = false;
-//  const DirPosRight = false;
+  const BurgerStateExpanded = true;
+  const BurgerStateCollapsed = false;
+  //  const DirPosBottom = false;
+  //  const DirPosRight = false;
   export let folders;
 
   let vertDirPos = DirPosTop;
   let horDirPos = DirPosLeft;
+  let burgerState = BurgerStateExpanded;
 
   let dirItems = [];
   folders.forEach((f) => {
     f.style.height = 0;
-    f.style.overflowY = "hidden";
+    f.style.overflowY = 'hidden';
     dirItems = [...dirItems, f];
   });
 
   function toggleSelectedItem(index) {
     dirItems[index].style.height =
-      dirItems[index].style.height === "0px" ? "auto" : "0px";
+      dirItems[index].style.height === '0px' ? 'auto' : '0px';
     dirItems[index].style.overflowY =
-      dirItems[index].style.overflowY === "hidden" ? "auto" : "hidden";
+      dirItems[index].style.overflowY === 'hidden' ? 'auto' : 'hidden';
   }
 
   function toggleVertDirPos() {
@@ -30,51 +33,67 @@
     horDirPos = !horDirPos;
   }
 
-function showAll(ev) {
-  ev.preventDefault();
+  function showAll(ev) {
+    ev.preventDefault();
     dirItems.forEach((f) => {
-      f.style.height = "auto";
-      f.style.overflowY = "auto";
+      f.style.height = 'auto';
+      f.style.overflowY = 'auto';
     });
   }
 
   function showNone(ev) {
     ev.preventDefault();
     dirItems.forEach((f) => {
-      f.style.height = "0px";
-      f.style.overflowY = "hidden";
+      f.style.height = '0px';
+      f.style.overflowY = 'hidden';
     });
+  }
+
+  function toggleBurger(ev) {
+    ev.preventDefault();
+    burgerState = !burgerState;
   }
 </script>
 
 <section
   class="directory 
    {vertDirPos === DirPosTop ? 'directory--top' : 'directory--bottom'}
-    {horDirPos === DirPosLeft ? 'directory--left' : 'directory--right'}"
+   {horDirPos === DirPosLeft ? 'directory--left' : 'directory--right'}"
 >
-  <nav class="directory__nav">
-    <div
-      class="directory__corner"
-      title="Move Component Directory to different corner"
-    >
+  <nav
+    class="directory__nav {burgerState === BurgerStateCollapsed
+      ? 'directory__nav--collapsed'
+      : ''}"
+  >
+    <header class="directory__header">
+      <a href="#" class="directory__burger" on:click={toggleBurger}>
+        <div class="directory__burger-bun directory__burger-bun--top" />
+        <div class="directory__burger-bun directory__burger-bun--middle" />
+        <div class="directory__burger-bun directory__burger-bun--bottom" />
+      </a>
+      <h2 class="directory__title">Components</h2>
       <div
-        class="directory__corner-item directory__corner-item--top"
-        on:click={() => toggleVertDirPos()}
-      />
-      <div
-        class="directory__corner-item directory__corner-item--left"
-        on:click={() => toggleHorDirPos()}
-      />
-      <div
-        class="directory__corner-item directory__corner-item--right"
-        on:click={() => toggleHorDirPos()}
-      />
-      <div
-        class="directory__corner-item directory__corner-item--bottom"
-        on:click={() => toggleVertDirPos()}
-      />
-    </div>
-    <h2 class="directory__title">Components</h2>
+        class="directory__corner"
+        title="Move Component Directory to different corner"
+      >
+        <div
+          class="directory__corner-item directory__corner-item--top"
+          on:click={() => toggleVertDirPos()}
+        />
+        <div
+          class="directory__corner-item directory__corner-item--left"
+          on:click={() => toggleHorDirPos()}
+        />
+        <div
+          class="directory__corner-item directory__corner-item--right"
+          on:click={() => toggleHorDirPos()}
+        />
+        <div
+          class="directory__corner-item directory__corner-item--bottom"
+          on:click={() => toggleVertDirPos()}
+        />
+      </div>
+    </header>
     <ul class="directory__list">
       {#each dirItems as item, index}
         <li
@@ -84,7 +103,7 @@ function showAll(ev) {
           on:click={() => toggleSelectedItem(index)}
         >
           <span class="directory__item-nr">{index + 1}</span>
-          {item.dataset["dir"]}
+          {item.dataset['dir']}
         </li>
       {/each}
     </ul>
@@ -104,9 +123,9 @@ function showAll(ev) {
 </section>
 
 <style type="text/scss">
-  @import "./css/buttons.scss";
-  @import "./css/colors.scss";
-  @import "./css/fonts.scss";
+  @import './css/buttons.scss';
+  @import './css/colors.scss';
+  @import './css/fonts.scss';
   .directory {
     &,
     & * {
@@ -119,11 +138,38 @@ function showAll(ev) {
     transition: all 1s ease;
     position: fixed;
     z-index: 1000;
+    &__nav {
+      position: relative;
+    }
+    &__burger {
+      top: 0.3rem;
+      width: 2.5rem;
+      position: absolute;
+      display: flex;
+      flex-flow: row wrap;
+      gap: 0.4rem 0;
+    }
+    &__burger-bun {
+      &:before {
+        border-radius: 4px;
+        width: 2rem;
+        display: block;
+        content: ' ';
+        background-color: white;
+        height: 0.3rem;
+      }
+      &--top {
+      }
+      &--middle {
+      }
+      &--bottom {
+      }
+    }
     &__corner {
       width: 2.5rem;
       position: absolute;
-      top: 0.6rem;
-      right: 1.5rem;
+      top: 0.1rem;
+      right: 0rem;
       display: flex;
       flex-flow: row wrap;
     }
@@ -134,7 +180,7 @@ function showAll(ev) {
       &:before {
         display: inline-block;
         color: white;
-        content: "▲";
+        content: '▲';
       }
       &--top {
         text-align: center;
@@ -182,9 +228,27 @@ function showAll(ev) {
       left: none;
       right: 0px;
     }
+    &__nav {
+      max-width: 500px;
+      max-height: 800px;
+      height: auto;
+      width: auto;
+      transition: all 1s ease;
+      overflow: visible;
+      &--collapsed {
+        max-width: 2.2rem;
+        max-height: 2.2rem;
+        overflow: hidden;
+      }
+    }
+    &__header {
+      min-width: 300px;
+      position: relative; 
+    }  
     &__title {
+      text-align: center;
       color: white;
-      padding: 0.25em 0.5em 0.75em 0.5em;
+      padding: 0.25em 1em 0.75em 1em;
       line-height: 1.4em;
       font-family: $font-family__primary;
       font-weight: 500;
@@ -240,5 +304,7 @@ function showAll(ev) {
         color: white;
       }
     }
+  }
+  @media (max-width: 800px) {
   }
 </style>
