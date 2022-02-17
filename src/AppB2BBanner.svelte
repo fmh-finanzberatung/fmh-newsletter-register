@@ -1,5 +1,9 @@
 <script>
+  import { onMount } from 'svelte';
   let slider = null;
+  let sliderItemIndex = 0;
+  let sliderItemsLength = 0;
+
   const SlideDirectionLeft = 'left';
   const SlideDirectionRight = 'right';
 
@@ -13,33 +17,62 @@
     return `https://www.fmh.de/resources/assets/1762/${size}/c8c2ac41cdecb1817a0e9f7b51efbe6ad78747cc-burning-planet.jpg`;
   }
 
-  function onScroll(e) {
-    //console.log(e);
+  function filterTagChildren(parentNode) {
+    const children = [...parentNode.childNodes].filter((n) => n.tagName);
+    return children;
   }
 
   function avgItemWidth(parentNode) {
-    const tagChildren = [...parentNode.childNodes].filter((n) => n.tagName);
+    const tagChildren = filterTagChildren(parentNode);
     return (
       tagChildren.reduce((sum, child) => sum + child.clientWidth, 0) /
       tagChildren.length
     );
   }
 
-  function slide(ev, slideDirection) {
-    let scrollWidth = avgItemWidth(slider) + 200;
-    if (slideDirection === SlideDirectionLeft) {
-      slider.scrollLeft -= scrollWidth;
-      return true;
-    }
-    slider.scrollLeft += scrollWidth;
-    return true;
-  }
+  $: showLeftHandle = Math.abs(sliderItemIndex) > 0;
+  $: showRightHandle = Math.abs(sliderItemIndex) < sliderItemsLength - 2;
+
+  onMount(() => {
+    sliderItemsLength = filterTagChildren(slider).length;
+  });
 
   function slideLeft(ev) {
-    return slide(ev, SlideDirectionLeft);
+    sliderItemIndex += 1;
+    //if (sliderItemIndex <= 0) {
+      //  sliderItemIndex = 0;
+      //}
+    return slide(ev);
   }
+
   function slideRight(ev) {
-    return slide(ev, SlideDirectionRight);
+    sliderItemIndex -= 1;
+    if (sliderItemIndex >= sliderItemsLength - 2) {
+      sliderItemIndex = sliderItemsLength - 2;
+    }
+    return slide(ev);
+  }
+
+  function slide(ev) {
+    ev.preventDefault();
+    let scrollWidth = avgItemWidth(slider);
+
+    let x = sliderItemIndex * scrollWidth;
+    const animation = slider.animate(
+      [
+        //{ transform: `translateX(${startAt})` },
+        { transform: `translateX(${x}px)` },
+      ],
+      {
+        duration: 1000,
+        easing: 'linear',
+        fill: 'forwards',
+      }
+    );
+    animation.onfinish = (ev) => {
+      console.log('animation finished', ev);
+    };
+    //animation.pause();
   }
 </script>
 
@@ -71,51 +104,50 @@
           Jetzt beraten lassen
         </a>
       </div>
-      <div class="b2b-banner__slider">
-        <ul
-          class="b2b-banner__slider-list"
-          dir="ltr"
-          bind:this={slider}
-          on:scroll={onScroll}
-        >
-          <li class="b2b-banner__slider-item">
-            <BankingIcon />
-            <span class="b2b-banner__slider-caption">
-              F&uuml;r Banken 
-            </span>
-          </li>
-          <li class="b2b-banner__slider-item">
-            <PublishingServicesIcon />
-            <span class="b2b-banner__slider-caption">
-              Publishing Services
-            </span>
-          </li>
-          <li class="b2b-banner__slider-item">
-            <PressServicesIcon />
-            <span class="b2b-banner__slider-caption"> Presse-Services </span>
-          </li>
-          <li class="b2b-banner__slider-item">
-            <InfoIcon />
-            <span class="b2b-banner__slider-caption"> Info-Services </span>
-          </li>
-        </ul>
-        <div
-          class="b2b-banner__slider-handle b2b-banner__slider-handle--left"
-          on:click={slideLeft}
-        >
-          <div class="b2b-banner__slider-handle-icon">
-            <ChevronLeftIcon />
-          </div>
+      <footer class="b2b-banner__slider">
+        <div class="b2b-banner__slider-wrapper">
+          <ul class="b2b-banner__slider-list" dir="ltr" bind:this={slider}>
+            <li class="b2b-banner__slider-item">
+              <BankingIcon />
+              <span class="b2b-banner__slider-caption"> F&uuml;r Banken </span>
+            </li>
+            <li class="b2b-banner__slider-item">
+              <PublishingServicesIcon />
+              <span class="b2b-banner__slider-caption">
+                Publishing Services
+              </span>
+            </li>
+            <li class="b2b-banner__slider-item">
+              <PressServicesIcon />
+              <span class="b2b-banner__slider-caption"> Presse-Services </span>
+            </li>
+            <li class="b2b-banner__slider-item">
+              <InfoIcon />
+              <span class="b2b-banner__slider-caption"> Info-Services </span>
+            </li>
+          </ul>
         </div>
-        <div
-          class="b2b-banner__slider-handle b2b-banner__slider-handle--right"
-          on:click={slideRight}
-        >
-          <div class="b2b-banner__slider-handle-icon">
-            <ChevronLeftIcon flip="true" />
+        {#if showLeftHandle}
+          <div
+            class="b2b-banner__slider-handle b2b-banner__slider-handle--left"
+            on:click={slideLeft}
+          >
+            <div class="b2b-banner__slider-handle-icon">
+              <ChevronLeftIcon />
+            </div>
           </div>
-        </div>
-      </div>
+        {/if}
+        {#if showRightHandle}
+          <div
+            class="b2b-banner__slider-handle b2b-banner__slider-handle--right"
+            on:click={slideRight}
+          >
+            <div class="b2b-banner__slider-handle-icon">
+              <ChevronLeftIcon flip="true" />
+            </div>
+          </div>
+        {/if}
+      </footer>
     </div>
   </div>
 </template>
@@ -227,8 +259,12 @@
     &__slider {
       margin: auto 0 0 0;
       position: relative;
-      //width: 100%;
       background-color: $color__primary--lighter;
+    }
+    &__slider-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
     }
     &__slider-list {
       position: relative;
@@ -306,13 +342,10 @@
         margin-left: 0;
       }
       &__slider {
-        //overflow-x: scroll;
         white-space: nowrap;
       }
-        &__slider-list {
-          gap: 0;
-        justify-content: space-between;
-        // indent left by width of handle
+      &__slider-wrapper {
+        overflow-x: scroll;
         margin-left: $handleWidth;
         margin-right: $handleWidth;
         scrollbar-width: none; /* Firefox */
@@ -323,12 +356,15 @@
           width: 0px;
           height: 0px;
         }
-        scroll-snap-type: x mandatory;
-        overflow-x: scroll;
+      }
+      &__slider-list {
+        gap: 0;
+        justify-content: space-between;
+        // indent left by width of handle
       }
       &__slider-item {
         min-width: 200px;
-        scroll-snap-align: start;  // center
+        scroll-snap-align: start; // center
         scroll-snap-stop: always;
       }
       &__slider-handle {
