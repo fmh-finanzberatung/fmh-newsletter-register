@@ -331,7 +331,7 @@
   }
 
   // max-width must include 40px of left (20px) and right (20px) margin
-  @media (max-width: 640px) {
+  @media (max-width: 500px) {
     .b2b-banner {
       padding: 0;
       &__box {
