@@ -30,8 +30,8 @@
     );
   }
 
-  $: showLeftHandle = Math.abs(sliderItemIndex) > 0;
-  $: showRightHandle = Math.abs(sliderItemIndex) < sliderItemsLength - 2;
+  $: activeLeftHandle = Math.abs(sliderItemIndex) > 0;
+  $: activeRightHandle = Math.abs(sliderItemIndex) < sliderItemsLength - 2;
 
   onMount(() => {
     sliderItemsLength = filterTagChildren(slider).length;
@@ -40,8 +40,8 @@
   function slideLeft(ev) {
     sliderItemIndex += 1;
     //if (sliderItemIndex <= 0) {
-      //  sliderItemIndex = 0;
-      //}
+    //  sliderItemIndex = 0;
+    //}
     return slide(ev);
   }
 
@@ -54,6 +54,8 @@
   }
 
   function slide(ev) {
+    console.log('ev:', ev);
+    console.log('ev:', ev.clientX);
     ev.preventDefault();
     let scrollWidth = avgItemWidth(slider);
 
@@ -109,7 +111,9 @@
           <ul class="b2b-banner__slider-list" dir="ltr" bind:this={slider}>
             <li class="b2b-banner__slider-item">
               <BankingIcon />
-              <span class="b2b-banner__slider-caption"> F&uuml;r Banken </span>
+              <span class="b2b-banner__slider-caption">
+                Banking &amp; Corporate Services
+              </span>
             </li>
             <li class="b2b-banner__slider-item">
               <PublishingServicesIcon />
@@ -127,26 +131,33 @@
             </li>
           </ul>
         </div>
-        {#if showLeftHandle}
+        <div
+class="b2b-banner__slider-handle b2b-banner__slider-handle--left
+{activeLeftHandle ? 'b2b-banner__slider-handle--active' : ''}"
+          on:click={slideLeft}
+        >
           <div
-            class="b2b-banner__slider-handle b2b-banner__slider-handle--left"
-            on:click={slideLeft}
+            class="b2b-banner__slider-handle-icon 
+            {activeLeftHandle ? 'b2b-banner__slider-handle-icon--active' : ''}"
           >
-            <div class="b2b-banner__slider-handle-icon">
-              <ChevronLeftIcon />
-            </div>
+            <ChevronLeftIcon active={activeLeftHandle} />
           </div>
-        {/if}
-        {#if showRightHandle}
+        </div>
+        <div
+class="b2b-banner__slider-handle b2b-banner__slider-handle--right
+{activeLeftHandle ? 'b2b-banner__slider-handle--active' : ''}
+"
+          on:click={slideRight}
+        >
           <div
-            class="b2b-banner__slider-handle b2b-banner__slider-handle--right"
-            on:click={slideRight}
+            class="b2b-banner__slider-handle-icon
+              {activeRightHandle
+              ? 'b2b-banner__slider-handle-icon--active'
+              : ''}"
           >
-            <div class="b2b-banner__slider-handle-icon">
-              <ChevronLeftIcon flip="true" />
-            </div>
+            <ChevronLeftIcon flip="true" active={activeRightHandle} />
           </div>
-        {/if}
+        </div>
       </footer>
     </div>
   </div>
@@ -274,7 +285,6 @@
     }
     &__slider-item {
       position: relative;
-      //border: 1px solid red;
       letter-spacing: 0.025em;
       padding: 12px 0;
       text-align: center;
@@ -305,7 +315,6 @@
       width: $handleWidth;
       position: absolute;
       top: 0;
-      cursor: pointer;
       transition: background-color 0.3s linear;
       &--left {
         left: 0;
@@ -313,10 +322,12 @@
       &--right {
         right: 0;
       }
-      &:hover {
-        cursor: pointer;
-        // background-color: rgba(black, 0.18);
-        background-color: $color__primary--dark;
+      &--active {
+        &:hover {
+          cursor: pointer;
+          // background-color: rgba(black, 0.18);
+          background-color: $color__primary--dark;
+        }
       }
     }
     &__slider-handle-icon {
@@ -342,7 +353,7 @@
         margin-left: 0;
       }
       &__slider {
-        white-space: nowrap;
+        //white-space: nowrap;
       }
       &__slider-wrapper {
         overflow-x: scroll;
