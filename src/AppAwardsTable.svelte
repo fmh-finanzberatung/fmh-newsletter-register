@@ -233,8 +233,7 @@
       flex: auto 1 1; 
     }
     &__siegel {
-      
-      max-width: 100px;
+      max-width: 180px;
       margin-top: 3rem;
     }
     &__caption {
@@ -331,9 +330,9 @@
       margin-right: 0;
       margin-left: auto;
       min-width: 80px;
-      max-width: 20%; 
+      max-width: 100%; 
       display: block; 
-      padding:  0.25rem 0.5rem;
+      padding:  0.25rem 0 0.25rem 0.5rem;
     } 
     &__figcaption {
       overflow-x: hidden;
@@ -341,7 +340,6 @@
       font-family: $font-family__primary;
       font-size: $font-size__small;
       text-align: center; 
-      max-width: 100px;
     } 
     &__link {
       display: block;

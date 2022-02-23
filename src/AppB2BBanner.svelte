@@ -3,15 +3,28 @@
   let slider = null;
   let sliderItemIndex = 0;
   let sliderItemsLength = 0;
-
-  const SlideDirectionLeft = 'left';
-  const SlideDirectionRight = 'right';
+  let touchedHandle = '';
 
   import BankingIcon from './assets/fmh-b2b-banking-corporate-services.svelte';
   import InfoIcon from './assets/fmh-b2b-info-services.svelte';
   import PressServicesIcon from './assets/fmh-b2b-press-services.svelte';
   import PublishingServicesIcon from './assets/fmh-b2b-publishing-services.svelte';
   import ChevronLeftIcon from './assets/chevron-left.svelte';
+
+
+  const debounce = (func, wait) => {
+    let timeout;
+
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }; 
 
   function imgUrl(size) {
     return `https://www.fmh.de/resources/assets/1762/${size}/c8c2ac41cdecb1817a0e9f7b51efbe6ad78747cc-burning-planet.jpg`;
@@ -30,14 +43,59 @@
     );
   }
 
+  $: touchedLeftHandle = touchedHandle === 'left';
+  $: touchedRightHandle = touchedHandle === 'right';
   $: activeLeftHandle = Math.abs(sliderItemIndex) > 0;
   $: activeRightHandle = Math.abs(sliderItemIndex) < sliderItemsLength - 2;
 
+  function moveElement(ele, x) {
+    const animation = ele.animate(
+      [
+        //{ transform: `translateX(${startAt})` },
+        { transform: `translateX(${x}px)` },
+      ],
+      {
+        duration: 500,
+        easing: 'ease-in-out',
+        //easing: 'linear',
+        fill: 'forwards',
+      }
+    );
+    animation.onfinish = (ev) => {
+      console.log('animation finished', ev);
+    };
+    //animation.pause();
+  }
+
   onMount(() => {
     sliderItemsLength = filterTagChildren(slider).length;
+      window.addEventListener(
+        'resize',
+        debounce((ev) => {
+          //console.log('debounce ev', ev);
+          const x = 0;
+          moveElement(slider, x);
+        }, 500),
+        true
+      );
+    if (window.DeviceOrientationEvent) {
+      window.addEventListener(
+        'orientationchange',
+        (ev) => {
+          // console.log(ev);
+          const x = 0;
+          moveElement(slider, x);
+        },
+        true
+      );
+    }
   });
 
   function slideLeft(ev) {
+    if (!activeLeftHandle) {
+      return false;
+    }
+    ev.preventDefault();
     sliderItemIndex += 1;
     //if (sliderItemIndex <= 0) {
     //  sliderItemIndex = 0;
@@ -46,6 +104,10 @@
   }
 
   function slideRight(ev) {
+    if (!activeRightHandle) {
+      return false;
+    }
+    ev.preventDefault();
     sliderItemIndex -= 1;
     if (sliderItemIndex >= sliderItemsLength - 2) {
       sliderItemIndex = sliderItemsLength - 2;
@@ -56,25 +118,9 @@
   function slide(ev) {
     console.log('ev:', ev);
     console.log('ev:', ev.clientX);
-    ev.preventDefault();
     let scrollWidth = avgItemWidth(slider);
-
     let x = sliderItemIndex * scrollWidth;
-    const animation = slider.animate(
-      [
-        //{ transform: `translateX(${startAt})` },
-        { transform: `translateX(${x}px)` },
-      ],
-      {
-        duration: 1000,
-        easing: 'linear',
-        fill: 'forwards',
-      }
-    );
-    animation.onfinish = (ev) => {
-      console.log('animation finished', ev);
-    };
-    //animation.pause();
+    moveElement(slider, x);
   }
 </script>
 
@@ -93,7 +139,7 @@
           height="320"
         />
       </picture>
-      <div class="b2b-banner__box">
+      <a class="b2b-banner__box" href="https://www.fmh.de/kontakt">
         <span class="b2b-banner__box-question"> Schon gewusst? </span>
         <span class="b2b-banner__box-answer">
           Mehr als 300 europäische Unternehmen nutzen bereits unsere Daten und
@@ -102,10 +148,8 @@
         <span class="b2b-banner__box-can-we-help">
           Was können wir für Sie tun?
         </span>
-        <a class="b2b-banner__box-link" href="https://www.fmh.de/b2b/">
-          Jetzt beraten lassen
-        </a>
-      </div>
+        <span class="b2b-banner__box-link"> Jetzt beraten lassen </span>
+      </a>
       <footer class="b2b-banner__slider">
         <div class="b2b-banner__slider-wrapper">
           <ul class="b2b-banner__slider-list" dir="ltr" bind:this={slider}>
@@ -132,9 +176,13 @@
           </ul>
         </div>
         <div
-class="b2b-banner__slider-handle b2b-banner__slider-handle--left
-{activeLeftHandle ? 'b2b-banner__slider-handle--active' : ''}"
+          class="b2b-banner__slider-handle b2b-banner__slider-handle--left
+{activeLeftHandle ? 'b2b-banner__slider-handle--active' : ''}
+{touchedLeftHandle ? 'b2b-banner__slider-handle--touch' : ''}
+"
           on:click={slideLeft}
+          on:touchstart={ () => touchedHandle = 'left'}
+          on:touchend={ () => touchedHandle = ''}
         >
           <div
             class="b2b-banner__slider-handle-icon 
@@ -144,10 +192,13 @@ class="b2b-banner__slider-handle b2b-banner__slider-handle--left
           </div>
         </div>
         <div
-class="b2b-banner__slider-handle b2b-banner__slider-handle--right
+          class="b2b-banner__slider-handle b2b-banner__slider-handle--right
 {activeLeftHandle ? 'b2b-banner__slider-handle--active' : ''}
+{touchedRightHandle ? 'b2b-banner__slider-handle--touch' : ''}
 "
           on:click={slideRight}
+          on:touchstart={() => touchedHandle = 'right'}
+          on:touchend={() => touchedHandle = ''}
         >
           <div
             class="b2b-banner__slider-handle-icon
@@ -189,6 +240,8 @@ class="b2b-banner__slider-handle b2b-banner__slider-handle--right
       max-width: 1210px;
     }
     &__box {
+      text-decoration: none;
+      display: block;
       position: relative;
       max-width: 480px;
       padding: 30px 40px 25px;
@@ -271,6 +324,7 @@ class="b2b-banner__slider-handle b2b-banner__slider-handle--right
       margin: auto 0 0 0;
       position: relative;
       background-color: $color__primary--lighter;
+      transition: all 0.3s linear;
     }
     &__slider-wrapper {
       position: relative;
@@ -291,7 +345,7 @@ class="b2b-banner__slider-handle b2b-banner__slider-handle--right
       width: 25%;
       max-width: 200px;
       transition: background-color 0.3s linear;
-      &:hover {
+      &:hover, &:active {
         background-color: rgba(black, 0.18);
         cursor: pointer;
       }
@@ -323,8 +377,9 @@ class="b2b-banner__slider-handle b2b-banner__slider-handle--right
         right: 0;
       }
       &--active {
-        &:hover {
-          cursor: pointer;
+        cursor: pointer;
+        pointer-events: auto;
+        &:hover, .b2b-banner__slider-handle--touch {
           // background-color: rgba(black, 0.18);
           background-color: $color__primary--dark;
         }
@@ -342,7 +397,7 @@ class="b2b-banner__slider-handle b2b-banner__slider-handle--right
   }
 
   // max-width must include 40px of left (20px) and right (20px) margin
-  @media (max-width: 500px) {
+  @media (max-width: 1200px) {
     .b2b-banner {
       padding: 0;
       &__box {

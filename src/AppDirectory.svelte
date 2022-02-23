@@ -3,13 +3,12 @@
   const DirPosLeft = true;
   const BurgerStateExpanded = true;
   const BurgerStateCollapsed = false;
-  //  const DirPosBottom = false;
-  //  const DirPosRight = false;
   export let folders;
 
   let vertDirPos = DirPosTop;
   let horDirPos = DirPosLeft;
   let burgerState = BurgerStateExpanded;
+  let showAll = false;
 
   let dirItems = [];
   folders.forEach((f) => {
@@ -33,16 +32,16 @@
     horDirPos = !horDirPos;
   }
 
-  function showAll(ev) {
+  function toggleShowAll(ev) {
     ev.preventDefault();
-    dirItems.forEach((f) => {
-      f.style.height = 'auto';
-      f.style.overflowY = 'auto';
-    });
-  }
-
-  function showNone(ev) {
-    ev.preventDefault();
+    showAll = !showAll;
+    if (showAll) {
+      dirItems.forEach((f) => {
+        f.style.height = 'auto';
+        f.style.overflowY = 'auto';
+      });
+      return;
+    }
     dirItems.forEach((f) => {
       f.style.height = '0px';
       f.style.overflowY = 'hidden';
@@ -111,13 +110,13 @@
       <a
         href="#"
         class="directory__show directory__show--all"
-        on:click={showAll}>Show All</a
+        on:click={toggleShowAll}>{ showAll ? 'Show All' : 'Hide All' }</a
       >
-      <a
+      <!--a
         href="#"
         class="directory__show directory__show--none"
-        on:click={showNone}>Show None</a
-      >
+        on:click={toggleOrientation}></a
+      -->
     </div>
   </nav>
 </section>
@@ -243,8 +242,8 @@
     }
     &__header {
       min-width: 300px;
-      position: relative; 
-    }  
+      position: relative;
+    }
     &__title {
       text-align: center;
       color: white;

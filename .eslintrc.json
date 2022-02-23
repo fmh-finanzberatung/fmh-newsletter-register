@@ -1,0 +1,47 @@
+{ 
+  "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true,
+        "node": true
+      },
+      "plugins": ["import", "svelte3"],
+      "extends": ["eslint:recommended", "plugin:import/recommended"],
+      "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+      },
+      "overrides": [
+        {
+          "files": ["*.svelte"],
+          "processor": "svelte3/svelte3"
+        }
+      ],
+      "rules": {
+        "svelte3/no-invalid-interp": "error",
+        "svelte3/no-unknown-binding": "error",
+        "svelte3/no-unknown-export": "error",
+        "svelte3/no-unknown-import": "error",
+        "svelte3/no-unused-components": "error",
+        "svelte3/no-unused-css": "error",
+        "svelte3/no-unused-globals": "error",
+        "svelte3/no-unused-mixins": "error",
+        "svelte3/no-unused-store-definitions": "error",
+        "no-unused-vars": [
+          "error",
+          { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }
+        ],
+        "svelte3/no-void-component": "error",
+        "svelte3/no-void-elements": "error",
+        "svelte3/no-void-import": "error",
+        "svelte3/no-void-return": "error",
+        "svelte3/no-void-tag": "error",
+        "svelte3/no-void-template": "error",
+        "svelte3/no-void-text": "error",
+        "svelte3/no-void-text-content": "error",
+        "svelte3/no-void-text-content-single": "error",
+        "svelte3/no-void-text-content-single-line": "error",
+        "svelte3/no-void-text-content-single-line-no-space": "error"
+      }
+    }
+}

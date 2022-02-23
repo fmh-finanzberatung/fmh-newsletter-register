@@ -13,6 +13,3 @@ setTimeout(() => {
     props: { }
   });
 }, delay);
-
-//export default app;
-
