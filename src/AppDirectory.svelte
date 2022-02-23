@@ -110,7 +110,7 @@
       <a
         href="#"
         class="directory__show directory__show--all"
-        on:click={toggleShowAll}>{ showAll ? 'Show All' : 'Hide All' }</a
+        on:click={toggleShowAll}>{ showAll ? 'Hide All' : 'Hide All' }</a
       >
       <!--a
         href="#"
