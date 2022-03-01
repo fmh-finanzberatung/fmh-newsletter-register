@@ -6,16 +6,18 @@
     <style>
       body {
         margin: 0;
-        padding: 0;
+        padding: 0 10px;
       }
       .layout {
-        margin-right: auto;
-        margin-left: auto;
+        margin: 10px auto;
         max-width: 1210px;
         display: flex;
         flex-flow: row wrap;
         align-content: space-around;
         gap: 10px;
+      }
+      .layout__1 {
+        flex: 1 1 1200px;
       }
       .layout__2 {
         flex: 1 1 600px;
@@ -25,7 +27,7 @@
       }
       .layout > * {
         min-width: 300px;
-        max-width: 600px;
+        max-width: 1200px;
       }
     </style>
     <title>FMH-Components</title>
@@ -60,7 +62,7 @@
     <script defer src="/build/image-box.js"></script>
   </head>
   <body>
-    <div id="directory" data-dev-host="x-localhost"></div>
+    <div id="directory" data-dev-host="localhost"></div>
     <div id="b2b-banner" data-dir="B2B-Banner"></div>
     <div class="layout">
       <div
@@ -113,11 +115,6 @@
         data-dir="Simple Textbox"
       ></div>
       <div
-        class="layout__2"
-        id="newsletter-register"
-        data-dir="Newsletter Registration"
-      ></div>
-      <div
         id="article-teasers"
         class="layout__2"
         data-keyword="fmh-award"
@@ -126,6 +123,13 @@
         data-url="https://www.fmh.de/api/topics/keyword-articles"
       ></div>
     </div>
+    <div class="layout" 
+      data-dir="Newsletter Registration">
+      <div
+        class="layout__1"
+        id="newsletter-register"
+      ></div>
+    </div> 
     <div class="layout" data-dir="Youtube embedded">
       <div
         data-target="youtube-video"

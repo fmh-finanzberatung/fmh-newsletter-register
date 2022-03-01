@@ -110,19 +110,18 @@
   @import './css/buttons.scss';
   
   .newsletter-register {
-    
+    margin: 0;  
     height: 100%; 
     width: 100%; 
     background-color: #f3f3f3;
     padding: 20px;
-
   }
+
   .newsletter-register, .newsletter-register * {
     box-sizing: border-box;
-    margin: 0;
     border: 0;
   }
-  
+
   h2, p, input {
     font-family: $font-family__primary;
   }  
