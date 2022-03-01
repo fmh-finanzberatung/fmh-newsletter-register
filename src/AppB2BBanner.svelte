@@ -345,10 +345,13 @@
       width: 25%;
       max-width: 200px;
       transition: background-color 0.3s linear;
+      /* 
+       * activate when links are provided
       &:hover, &:active {
         background-color: rgba(black, 0.18);
         cursor: pointer;
       }
+      */
     }
     &__slider-caption {
       color: white;
