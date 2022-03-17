@@ -122,6 +122,7 @@
     let x = sliderItemIndex * scrollWidth;
     moveElement(slider, x);
   }
+
 </script>
 
 <template>
@@ -153,26 +154,46 @@
       <footer class="b2b-banner__slider">
         <div class="b2b-banner__slider-wrapper">
           <ul class="b2b-banner__slider-list" dir="ltr" bind:this={slider}>
-            <li class="b2b-banner__slider-item">
+            <a role="listitem" 
+              class="b2b-banner__slider-item"
+              href="/banking-corporate-service"
+              title="Banking &amp; Corporate Services">
               <BankingIcon />
-              <span class="b2b-banner__slider-caption">
+              <span  
+                class="b2b-banner__slider-caption">
                 Banking &amp; Corporate Services
               </span>
-            </li>
-            <li class="b2b-banner__slider-item">
+            </a>
+            <a role="listitem"
+              class="b2b-banner__slider-item"
+              href="/banking-corporate-service"
+              title="Publishing Services">
               <PublishingServicesIcon />
-              <span class="b2b-banner__slider-caption">
+              <span 
+                class="b2b-banner__slider-caption">
                 Publishing Services
               </span>
-            </li>
-            <li class="b2b-banner__slider-item">
+            </a>
+            <a role="listitem"
+              class="b2b-banner__slider-item"
+              href="/fuer-redaktionen"
+              title="Presse Services">
               <PressServicesIcon />
-              <span class="b2b-banner__slider-caption"> Presse-Services </span>
-            </li>
-            <li class="b2b-banner__slider-item">
+              <span
+                class="b2b-banner__slider-caption">
+                Presse-Services
+              </span>
+            </a>
+            <a role="listitem" 
+              class="b2b-banner__slider-item"
+              href="/banking-corporate-service"
+              title="Info-Services">
               <InfoIcon />
-              <span class="b2b-banner__slider-caption"> Info-Services </span>
-            </li>
+              <span 
+                class="b2b-banner__slider-caption">
+                Info-Services
+              </span>
+            </a>
           </ul>
         </div>
         <div
@@ -338,6 +359,7 @@
       display: flex;
     }
     &__slider-item {
+      text-decoration: none;
       position: relative;
       letter-spacing: 0.025em;
       padding: 12px 0;
@@ -345,13 +367,10 @@
       width: 25%;
       max-width: 200px;
       transition: background-color 0.3s linear;
-      /* 
-       * activate when links are provided
       &:hover, &:active {
         background-color: rgba(black, 0.18);
         cursor: pointer;
       }
-      */
     }
     &__slider-caption {
       color: white;
