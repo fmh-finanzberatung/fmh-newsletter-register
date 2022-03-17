@@ -144,7 +144,8 @@
         href="/banking-corporate-service">
         <span class="b2b-banner__box-question"> Schon gewusst? </span>
         <span class="b2b-banner__box-answer">
-          Mehr als 300 europäische Unternehmen nutzen bereits unsere Daten und
+          Mehr als 300 europäische Unternehmen nutzen
+          bereits unsere Daten und
           Services für ihren Erfolg.
         </span>
         <span class="b2b-banner__box-can-we-help">
