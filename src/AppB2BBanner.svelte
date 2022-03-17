@@ -151,7 +151,9 @@
         <span class="b2b-banner__box-can-we-help">
           Was können wir für Sie tun?
         </span>
-        <span class="b2b-banner__box-link"> Jetzt beraten lassen </span>
+        <span class="b2b-banner__box-link">
+          Jetzt beraten lassen
+        </span>
       </a>
       <footer class="b2b-banner__slider">
         <div class="b2b-banner__slider-wrapper">
