@@ -1,5 +1,40 @@
 <script>
   import { onMount } from 'svelte';
+
+  const DISPLAY_TYPE_GENERAL = 'general';
+  const DISPLAY_TYPE_MORTGAGE_RESEARCH = 'mg';
+
+  export let displayType = DISPLAY_TYPE_MORTGAGE_RESEARCH; //DISPLAY_TYPE_GENERAL;
+
+  const displayDefintions = {
+    [DISPLAY_TYPE_GENERAL]: {
+      imgUrl(size) {
+        return `https://www.fmh.de/resources/assets/1762/${size}/c8c2ac41cdecb1817a0e9f7b51efbe6ad78747cc-burning-planet.jpg`;
+      },
+      box: {
+        question: 'Schon gewusst?',
+        answer: `Mehr als 300 europäische Unternehmen nutzen bereits unsere
+        Daten und Service für ihren Erfolg`,
+        ctaLabel: 'Was können wir für Sie tun?',
+        ctaText: 'Jetzt beraten lassen',
+        link: '/banking-corporate-service',
+      },
+    },
+    [DISPLAY_TYPE_MORTGAGE_RESEARCH]: {
+      imgUrl(size) {
+        return `https://www.fmh.de/resources/assets/1789/${size}/d596912241d8c877dc85a93c0cdaa6c2b588e998-mortgage-research.jpg`;
+      },
+      box: {
+        question: 'Neue Studie',
+        answer: `Marktkompass 2022: Baufinanzierung und
+        Turbulenzen<br/>Einblick. Ausblick. Durckblick.`,
+        ctaLabel: 'Eine Studie von FMH X und SWI Finance',
+        ctaText: 'Mehr erfahren',
+        link: 'https://www.fmhx.de/studie-marktkompass-baufinanzierung-2022',
+      },
+    },
+  };
+  const displayDef = displayDefintions[displayType];
   let slider = null;
   let sliderItemIndex = 0;
   let sliderItemsLength = 0;
@@ -10,7 +45,6 @@
   import PressServicesIcon from './assets/fmh-b2b-press-services.svelte';
   import PublishingServicesIcon from './assets/fmh-b2b-publishing-services.svelte';
   import ChevronLeftIcon from './assets/chevron-left.svelte';
-
 
   const debounce = (func, wait) => {
     let timeout;
@@ -24,11 +58,9 @@
       clearTimeout(timeout);
       timeout = setTimeout(later, wait);
     };
-  }; 
+  };
 
-  function imgUrl(size) {
-    return `https://www.fmh.de/resources/assets/1762/${size}/c8c2ac41cdecb1817a0e9f7b51efbe6ad78747cc-burning-planet.jpg`;
-  }
+  function imgUrl(size) {}
 
   function filterTagChildren(parentNode) {
     const children = [...parentNode.childNodes].filter((n) => n.tagName);
@@ -69,15 +101,15 @@
 
   onMount(() => {
     sliderItemsLength = filterTagChildren(slider).length;
-      window.addEventListener(
-        'resize',
-        debounce((ev) => {
-          //console.log('debounce ev', ev);
-          const x = 0;
-          moveElement(slider, x);
-        }, 500),
-        true
-      );
+    window.addEventListener(
+      'resize',
+      debounce((ev) => {
+        //console.log('debounce ev', ev);
+        const x = 0;
+        moveElement(slider, x);
+      }, 500),
+      true
+    );
     if (window.DeviceOrientationEvent) {
       window.addEventListener(
         'orientationchange',
@@ -122,81 +154,81 @@
     let x = sliderItemIndex * scrollWidth;
     moveElement(slider, x);
   }
-
 </script>
 
 <template>
   <div class="b2b-banner">
     <div class="b2b-banner__wrapper">
       <picture class="b2b-banner__picture">
-        <source media="(max-width: 799px)" srcset={imgUrl('giant')} />
-        <source media="(min-width: 800px)" srcset={imgUrl('original')} />
+        <source
+          media="(max-width: 799px)"
+          srcset={displayDef.imgUrl('giant')}
+        />
+        <source
+          media="(min-width: 800px)"
+          srcset={displayDef.imgUrl('original')}
+        />
         <img
           class="b2b-banner__img"
-          src={imgUrl('original')}
+          src={displayDef.imgUrl('original')}
           alt="FMH Firmenkunden"
           loading="lazy"
           width="800"
           height="320"
         />
       </picture>
-      <a class="b2b-banner__box"
-        href="/banking-corporate-service">
-        <span class="b2b-banner__box-question"> Schon gewusst? </span>
+      <a class="b2b-banner__box" href={displayDef.box.link}>
+        <span class="b2b-banner__box-question">{@html displayDef.box.question}</span>
         <span class="b2b-banner__box-answer">
-          Mehr als 300 europäische Unternehmen nutzen
-          bereits unsere Daten und
-          Services für ihren Erfolg.
+          {@html displayDef.box.answer}
         </span>
         <span class="b2b-banner__box-can-we-help">
-          Was können wir für Sie tun?
+          {displayDef.box.ctaLabel}
         </span>
-        <span class="b2b-banner__box-link">
-          Jetzt beraten lassen
-        </span>
+        <span class="b2b-banner__box-link"> {displayDef.box.ctaText} </span>
       </a>
       <footer class="b2b-banner__slider">
         <div class="b2b-banner__slider-wrapper">
           <ul class="b2b-banner__slider-list" dir="ltr" bind:this={slider}>
-            <a role="listitem" 
+            <a
+              role="listitem"
               class="b2b-banner__slider-item"
               href="/banking-corporate-service"
-              title="Banking &amp; Corporate Services">
+              title="Banking &amp; Corporate Services"
+            >
               <BankingIcon />
-              <span  
-                class="b2b-banner__slider-caption">
+              <span class="b2b-banner__slider-caption">
                 Banking &amp; Corporate Services
               </span>
             </a>
-            <a role="listitem"
+            <a
+              role="listitem"
               class="b2b-banner__slider-item"
               href="/banking-corporate-service"
-              title="Publishing Services">
+              title="Publishing Services"
+            >
               <PublishingServicesIcon />
-              <span 
-                class="b2b-banner__slider-caption">
+              <span class="b2b-banner__slider-caption">
                 Publishing Services
               </span>
             </a>
-            <a role="listitem"
+            <a
+              role="listitem"
               class="b2b-banner__slider-item"
               href="/fuer-redaktionen"
-              title="Presse Services">
+              title="Presse Services"
+            >
               <PressServicesIcon />
-              <span
-                class="b2b-banner__slider-caption">
-                Presse-Services
-              </span>
+              <span class="b2b-banner__slider-caption"> Presse-Services </span>
             </a>
-            <a role="listitem" 
+            <a
+              role="listitem"
               class="b2b-banner__slider-item"
               href="/banking-corporate-service"
-              title="Info-Services">
+              title="Info-Services"
+            >
               <InfoIcon />
-              <span 
-                class="b2b-banner__slider-caption">
-                Info-Services
-              </span>
+              <span class="b2b-banner__slider-caption"> Info-Services </span>
             </a>
           </ul>
         </div>
@@ -206,8 +238,8 @@
 {touchedLeftHandle ? 'b2b-banner__slider-handle--touch' : ''}
 "
           on:click={slideLeft}
-          on:touchstart={ () => touchedHandle = 'left'}
-          on:touchend={ () => touchedHandle = ''}
+          on:touchstart={() => (touchedHandle = 'left')}
+          on:touchend={() => (touchedHandle = '')}
         >
           <div
             class="b2b-banner__slider-handle-icon 
@@ -222,8 +254,8 @@
 {touchedRightHandle ? 'b2b-banner__slider-handle--touch' : ''}
 "
           on:click={slideRight}
-          on:touchstart={() => touchedHandle = 'right'}
-          on:touchend={() => touchedHandle = ''}
+          on:touchstart={() => (touchedHandle = 'right')}
+          on:touchend={() => (touchedHandle = '')}
         >
           <div
             class="b2b-banner__slider-handle-icon
@@ -371,7 +403,8 @@
       width: 25%;
       max-width: 200px;
       transition: background-color 0.3s linear;
-      &:hover, &:active {
+      &:hover,
+      &:active {
         background-color: rgba(black, 0.18);
         cursor: pointer;
       }
@@ -405,7 +438,8 @@
       &--active {
         cursor: pointer;
         pointer-events: auto;
-        &:hover, .b2b-banner__slider-handle--touch {
+        &:hover,
+        .b2b-banner__slider-handle--touch {
           // background-color: rgba(black, 0.18);
           background-color: $color__primary--dark;
         }
