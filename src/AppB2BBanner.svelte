@@ -27,7 +27,7 @@
       box: {
         question: 'Neue Studie',
         answer: `Marktkompass 2022: Baufinanzierung und
-        Turbulenzen<br/>Einblick. Ausblick. Durckblick.`,
+        Turbulenzen<br/>Einblick. Ausblick. Durchblick.`,
         ctaLabel: 'Eine Studie von FMH X und SWI Finance',
         ctaText: 'Mehr erfahren',
         link: 'https://www.fmhx.de/studie-marktkompass-baufinanzierung-2022',
