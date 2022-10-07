@@ -185,6 +185,14 @@
                   </td>
                 </tr>
               {/if}
+              {#if table.footer }
+                <tr class="awards-table__tr">
+                  <td class="awards-table__td"
+                    colspan="{columns}">
+                    <p>{@html table.footer}</p>
+                  </td>
+                </tr>
+              {/if}
               <tr class="awards-table__tr">
                 <td class="awards-table__td"
                   colspan="{columns}">
