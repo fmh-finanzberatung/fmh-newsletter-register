@@ -171,7 +171,7 @@
               {/if}
               {#if table.data_annotation }
                 <tr class="awards-table__tr">
-                  <td class="awards-table__td"
+                  <td class="awards-table__td awards-table__td--footnote"
                     colspan="{columns}">
                     <p>{@html table.data_annotation}</p>
                   </td>
@@ -179,7 +179,7 @@
               {/if}
               {#if table.table_annotation }
                 <tr class="awards-table__tr">
-                  <td class="awards-table__td"
+                  <td class="awards-table__td awards-table__td--footnote"
                     colspan="{columns}">
                     <p>{@html table.table_annotation}</p>
                   </td>
@@ -187,14 +187,14 @@
               {/if}
               {#if table.footer }
                 <tr class="awards-table__tr">
-                  <td class="awards-table__td"
+                  <td class="awards-table__td awards-table__td--footnote"
                     colspan="{columns}">
-                    <p>{@html table.footer}</p>
+                    <p>{@html table.footer?.split('\n')?.join('<br/>')}</p>
                   </td>
                 </tr>
               {/if}
               <tr class="awards-table__tr">
-                <td class="awards-table__td"
+                <td class="awards-table__td awards-table__td--footnote"
                   colspan="{columns}">
                   <p>Quelle: FMH-Finanzberatung. Alle Angaben sind
                     urheberrechtlich geschützt.</p>
@@ -328,6 +328,9 @@
       }
       &--align-block {
         text-align: justify !important;
+      }
+      &--footnote {
+        font-size: $font-size__small;
       }
     }
     &__img {
