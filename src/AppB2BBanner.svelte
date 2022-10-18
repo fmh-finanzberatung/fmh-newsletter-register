@@ -42,7 +42,7 @@
         question: 'Schon gesehen?',
         answer: `FMH hat jetzt auch eine eigene
         B2B-Brand: FMH X`,
-        ctaLabel: 'Profitieren Sie von unseren Daten Produkten und Leistungen!',
+        ctaLabel: 'Profitieren Sie von unseren Daten, Produkten und Leistungen!',
         ctaText: 'Zur Website von FMH X',
         link: 'https://www.fmhx.de',
       },
