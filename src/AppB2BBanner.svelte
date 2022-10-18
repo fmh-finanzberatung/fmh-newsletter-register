@@ -3,8 +3,9 @@
 
   const DISPLAY_TYPE_GENERAL = 'general';
   const DISPLAY_TYPE_MORTGAGE_RESEARCH = 'mg';
+  const DISPLAY_TYPE_FMHX = 'fmhx';
 
-  export let displayType = DISPLAY_TYPE_MORTGAGE_RESEARCH; //DISPLAY_TYPE_GENERAL;
+  export let displayType = DISPLAY_TYPE_FMHX; //DISPLAY_TYPE_MORTGAGE_RESEARCH; //DISPLAY_TYPE_GENERAL;
 
   const displayDefintions = {
     [DISPLAY_TYPE_GENERAL]: {
@@ -31,6 +32,19 @@
         ctaLabel: 'Eine Studie von FMH X und SWI Finance',
         ctaText: 'Mehr erfahren',
         link: 'https://www.fmhx.de/studie-marktkompass-baufinanzierung-2022',
+      },
+    },
+    [DISPLAY_TYPE_FMHX]: {
+      imgUrl(size) {
+        return `https://www.fmh.de/resources/assets/1789/${size}/d596912241d8c877dc85a93c0cdaa6c2b588e998-mortgage-research.jpg`;
+      },
+      box: {
+        question: 'Schon gesehen?',
+        answer: `FMH hat jetzt auch eine eigene
+        B2B-Brand: FMH X`,
+        ctaLabel: 'Profitieren Sie von unseren Daten Produkten und Leistungen!',
+        ctaText: 'Zur Website von FMH X',
+        link: 'https://www.fmhx.de',
       },
     },
   };
@@ -193,7 +207,7 @@
             <a
               role="listitem"
               class="b2b-banner__slider-item"
-              href="/banking-corporate-service"
+              href="https://www.fmhx.de"
               title="Banking &amp; Corporate Services"
             >
               <BankingIcon />
@@ -204,7 +218,7 @@
             <a
               role="listitem"
               class="b2b-banner__slider-item"
-              href="/banking-corporate-service"
+              href="https://www.fmhx.de"
               title="Publishing Services"
             >
               <PublishingServicesIcon />
