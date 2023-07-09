@@ -1,4 +1,4 @@
-.b2b-banner.svelte-1vwe0u7.svelte-1vwe0u7 {
+.b2b-banner.svelte-bxqn66.svelte-bxqn66 {
   display: flex;
   flex-flow: row wrap;
   padding: 0;
@@ -7,12 +7,14 @@
   width: 100%;
   max-width: 1200px; }
 
-.b2b-banner.svelte-1vwe0u7.svelte-1vwe0u7, .b2b-banner.svelte-1vwe0u7 .svelte-1vwe0u7 {
-  box-sizing: border-box;
+.b2b-banner.svelte-bxqn66.svelte-bxqn66, .b2b-banner.svelte-bxqn66 .svelte-bxqn66 {
+  box-sizing: border-box; }
+
+.b2b-banner.svelte-bxqn66 .svelte-bxqn66 {
   margin: 0;
   padding: 0; }
 
-.b2b-banner__button.svelte-1vwe0u7.svelte-1vwe0u7 {
+.b2b-banner__button.svelte-bxqn66.svelte-bxqn66 {
   text-align: center;
   letter-spacing: 0.05em;
   height: 34px;
@@ -30,35 +32,35 @@
   padding: 0.25em 0.5em;
   width: 75%; }
 
-.b2b-banner__button--primary.svelte-1vwe0u7.svelte-1vwe0u7:hover {
+.b2b-banner__button--primary.svelte-bxqn66.svelte-bxqn66:hover {
   color: #005284;
   background-color: white; }
 
-.b2b-banner__button--secondary.svelte-1vwe0u7.svelte-1vwe0u7:hover {
+.b2b-banner__button--secondary.svelte-bxqn66.svelte-bxqn66:hover {
   background-color: #0066a1; }
 
-.fmhx.svelte-1vwe0u7.svelte-1vwe0u7, .certificates.svelte-1vwe0u7.svelte-1vwe0u7 {
+.fmhx.svelte-bxqn66.svelte-bxqn66, .certificates.svelte-bxqn66.svelte-bxqn66 {
   flex: 1 1 0;
   min-width: 300px;
   position: relative;
   padding: 1rem 1rem 3.5rem; }
 
-.fmhx__title.svelte-1vwe0u7.svelte-1vwe0u7, .fmhx__subtitle.svelte-1vwe0u7.svelte-1vwe0u7, .certificates__title.svelte-1vwe0u7.svelte-1vwe0u7, .certificates__subtitle.svelte-1vwe0u7.svelte-1vwe0u7 {
+.fmhx__title.svelte-bxqn66.svelte-bxqn66, .fmhx__subtitle.svelte-bxqn66.svelte-bxqn66, .certificates__title.svelte-bxqn66.svelte-bxqn66, .certificates__subtitle.svelte-bxqn66.svelte-bxqn66 {
   font-weight: 400;
   margin: 0;
   padding: 0;
   font-family: Roboto, arial, helvetica, sans-serif;
   line-height: 1.2em; }
 
-.fmhx__title.svelte-1vwe0u7.svelte-1vwe0u7, .certificates__title.svelte-1vwe0u7.svelte-1vwe0u7 {
+.fmhx__title.svelte-bxqn66.svelte-bxqn66, .certificates__title.svelte-bxqn66.svelte-bxqn66 {
   font-size: 1.4rem;
   font-family: Roboto, arial, helvetica, sans-serif; }
 
-.fmhx__subtitle.svelte-1vwe0u7.svelte-1vwe0u7, .certificates__subtitle.svelte-1vwe0u7.svelte-1vwe0u7 {
+.fmhx__subtitle.svelte-bxqn66.svelte-bxqn66, .certificates__subtitle.svelte-bxqn66.svelte-bxqn66 {
   font-size: 1.6rem;
   font-family: Roboto, arial, helvetica, sans-serif; }
 
-.fmhx__p.svelte-1vwe0u7.svelte-1vwe0u7 {
+.fmhx__p.svelte-bxqn66.svelte-bxqn66 {
   color: white;
   font-family: Roboto, arial, helvetica, sans-serif;
   font-size: 1rem;
@@ -66,7 +68,7 @@
   margin: 0;
   padding: 0; }
 
-.fmhx__buttons.svelte-1vwe0u7.svelte-1vwe0u7, .certificates__buttons.svelte-1vwe0u7.svelte-1vwe0u7 {
+.fmhx__buttons.svelte-bxqn66.svelte-bxqn66, .certificates__buttons.svelte-bxqn66.svelte-bxqn66 {
   padding: 1rem;
   position: absolute;
   bottom: 0;
@@ -74,20 +76,20 @@
   width: 100%;
   margin-bottom: 0; }
 
-.fmhx.svelte-1vwe0u7.svelte-1vwe0u7 {
+.fmhx.svelte-bxqn66.svelte-bxqn66 {
   background-color: #1194db; }
 
-.fmhx__title.svelte-1vwe0u7.svelte-1vwe0u7 {
+.fmhx__title.svelte-bxqn66.svelte-bxqn66 {
   font-size: 1.4rem;
   font-family: Roboto, arial, helvetica, sans-serif;
   color: #5fd5ff; }
 
-.fmhx__subtitle.svelte-1vwe0u7.svelte-1vwe0u7 {
+.fmhx__subtitle.svelte-bxqn66.svelte-bxqn66 {
   font-size: 1.6rem;
   font-family: Roboto, arial, helvetica, sans-serif;
   color: white; }
 
-.fmhx__slider-list.svelte-1vwe0u7.svelte-1vwe0u7 {
+.fmhx__slider-list.svelte-bxqn66.svelte-bxqn66 {
   padding: 0.5rem 0;
   margin: 0.5rem 0;
   border-radius: 3px;
@@ -98,12 +100,12 @@
   background-color: #085191;
   list-style: none; }
 
-.fmhx__slider-item.svelte-1vwe0u7.svelte-1vwe0u7 {
+.fmhx__slider-item.svelte-bxqn66.svelte-bxqn66 {
   flex: 1 1 0;
   min-width: 100px;
   text-align: center; }
 
-.fmhx__slider-caption.svelte-1vwe0u7.svelte-1vwe0u7 {
+.fmhx__slider-caption.svelte-bxqn66.svelte-bxqn66 {
   max-width: 10em;
   margin-left: auto;
   margin-right: auto;
@@ -111,26 +113,26 @@
   color: white;
   font-family: Roboto, arial, helvetica, sans-serif; }
 
-.certificates__title.svelte-1vwe0u7.svelte-1vwe0u7 {
+.certificates__title.svelte-bxqn66.svelte-bxqn66 {
   color: #085191; }
 
-.certificates__subtitle.svelte-1vwe0u7.svelte-1vwe0u7 {
+.certificates__subtitle.svelte-bxqn66.svelte-bxqn66 {
   color: #00a0ec; }
 
-.certificates__logo.svelte-1vwe0u7.svelte-1vwe0u7 {
+.certificates__logo.svelte-bxqn66.svelte-bxqn66 {
   display: block;
   width: 100%;
   height: auto; }
 
-.certificates__figure.svelte-1vwe0u7.svelte-1vwe0u7 {
+.certificates__figure.svelte-bxqn66.svelte-bxqn66 {
   margin: 0 auto; }
 
-.certificates__text-link.svelte-1vwe0u7.svelte-1vwe0u7 {
+.certificates__text-link.svelte-bxqn66.svelte-bxqn66 {
   color: #333;
   text-decoration: none;
   display: block;
   font-size: 1rem;
   font-family: Roboto, arial, helvetica, sans-serif; }
 
-.certificates__text-link.svelte-1vwe0u7.svelte-1vwe0u7:hover {
+.certificates__text-link.svelte-bxqn66.svelte-bxqn66:hover {
   text-decoration: underline; }
