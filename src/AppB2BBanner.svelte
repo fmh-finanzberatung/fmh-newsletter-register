@@ -121,7 +121,7 @@
     margin: 0 auto;
     gap: 2rem;
     width: 100%;
-    max-width: 1220px;
+    max-width: 1210px;
     &__fmhx {
       //
     }
