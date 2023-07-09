@@ -118,7 +118,7 @@
     display: flex;
     flex-flow: row wrap;
     padding: 0;
-    margin: 1rem auto;
+    margin: 2rem auto 1rem;
     gap: 2rem;
     width: 100%;
     max-width: 1210px;
