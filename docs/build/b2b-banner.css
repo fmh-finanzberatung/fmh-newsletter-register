@@ -1,20 +1,20 @@
-.b2b-banner.svelte-wimnwd.svelte-wimnwd {
+.b2b-banner.svelte-mdm35o.svelte-mdm35o {
   display: flex;
   flex-flow: row wrap;
   padding: 0;
-  margin: 0 auto;
+  margin: 1rem auto;
   gap: 2rem;
   width: 100%;
   max-width: 1210px; }
 
-.b2b-banner.svelte-wimnwd.svelte-wimnwd, .b2b-banner.svelte-wimnwd .svelte-wimnwd {
+.b2b-banner.svelte-mdm35o.svelte-mdm35o, .b2b-banner.svelte-mdm35o .svelte-mdm35o {
   box-sizing: border-box; }
 
-.b2b-banner.svelte-wimnwd .svelte-wimnwd {
+.b2b-banner.svelte-mdm35o .svelte-mdm35o {
   margin: 0;
   padding: 0; }
 
-.b2b-banner__button.svelte-wimnwd.svelte-wimnwd {
+.b2b-banner__button.svelte-mdm35o.svelte-mdm35o {
   text-align: center;
   letter-spacing: 0.05em;
   height: 34px;
@@ -32,35 +32,35 @@
   padding: 0.25em 0.5em;
   width: 75%; }
 
-.b2b-banner__button--primary.svelte-wimnwd.svelte-wimnwd:hover {
+.b2b-banner__button--primary.svelte-mdm35o.svelte-mdm35o:hover {
   color: #005284;
   background-color: white; }
 
-.b2b-banner__button--secondary.svelte-wimnwd.svelte-wimnwd:hover {
+.b2b-banner__button--secondary.svelte-mdm35o.svelte-mdm35o:hover {
   background-color: #0066a1; }
 
-.fmhx.svelte-wimnwd.svelte-wimnwd, .certificates.svelte-wimnwd.svelte-wimnwd {
+.fmhx.svelte-mdm35o.svelte-mdm35o, .certificates.svelte-mdm35o.svelte-mdm35o {
   flex: 1 1 0;
   min-width: 300px;
   position: relative;
   padding: 1rem 1rem 3.5rem; }
 
-.fmhx__title.svelte-wimnwd.svelte-wimnwd, .fmhx__subtitle.svelte-wimnwd.svelte-wimnwd, .certificates__title.svelte-wimnwd.svelte-wimnwd, .certificates__subtitle.svelte-wimnwd.svelte-wimnwd {
+.fmhx__title.svelte-mdm35o.svelte-mdm35o, .fmhx__subtitle.svelte-mdm35o.svelte-mdm35o, .certificates__title.svelte-mdm35o.svelte-mdm35o, .certificates__subtitle.svelte-mdm35o.svelte-mdm35o {
   font-weight: 400;
   margin: 0;
   padding: 0;
   font-family: Roboto, arial, helvetica, sans-serif;
   line-height: 1.2em; }
 
-.fmhx__title.svelte-wimnwd.svelte-wimnwd, .certificates__title.svelte-wimnwd.svelte-wimnwd {
+.fmhx__title.svelte-mdm35o.svelte-mdm35o, .certificates__title.svelte-mdm35o.svelte-mdm35o {
   font-size: 1.4rem;
   font-family: Roboto, arial, helvetica, sans-serif; }
 
-.fmhx__subtitle.svelte-wimnwd.svelte-wimnwd, .certificates__subtitle.svelte-wimnwd.svelte-wimnwd {
+.fmhx__subtitle.svelte-mdm35o.svelte-mdm35o, .certificates__subtitle.svelte-mdm35o.svelte-mdm35o {
   font-size: 1.6rem;
   font-family: Roboto, arial, helvetica, sans-serif; }
 
-.fmhx__p.svelte-wimnwd.svelte-wimnwd {
+.fmhx__p.svelte-mdm35o.svelte-mdm35o {
   color: white;
   font-family: Roboto, arial, helvetica, sans-serif;
   font-size: 1rem;
@@ -68,7 +68,7 @@
   margin: 0;
   padding: 0; }
 
-.fmhx__buttons.svelte-wimnwd.svelte-wimnwd, .certificates__buttons.svelte-wimnwd.svelte-wimnwd {
+.fmhx__buttons.svelte-mdm35o.svelte-mdm35o, .certificates__buttons.svelte-mdm35o.svelte-mdm35o {
   padding: 1rem;
   position: absolute;
   bottom: 0;
@@ -76,20 +76,20 @@
   width: 100%;
   margin-bottom: 0; }
 
-.fmhx.svelte-wimnwd.svelte-wimnwd {
+.fmhx.svelte-mdm35o.svelte-mdm35o {
   background-color: #1194db; }
 
-.fmhx__title.svelte-wimnwd.svelte-wimnwd {
+.fmhx__title.svelte-mdm35o.svelte-mdm35o {
   font-size: 1.4rem;
   font-family: Roboto, arial, helvetica, sans-serif;
   color: #5fd5ff; }
 
-.fmhx__subtitle.svelte-wimnwd.svelte-wimnwd {
+.fmhx__subtitle.svelte-mdm35o.svelte-mdm35o {
   font-size: 1.6rem;
   font-family: Roboto, arial, helvetica, sans-serif;
   color: white; }
 
-.fmhx__slider-list.svelte-wimnwd.svelte-wimnwd {
+.fmhx__slider-list.svelte-mdm35o.svelte-mdm35o {
   padding: 0.5rem 0;
   margin: 0.5rem 0;
   border-radius: 3px;
@@ -100,12 +100,12 @@
   background-color: #085191;
   list-style: none; }
 
-.fmhx__slider-item.svelte-wimnwd.svelte-wimnwd {
+.fmhx__slider-item.svelte-mdm35o.svelte-mdm35o {
   flex: 1 1 0;
   min-width: 100px;
   text-align: center; }
 
-.fmhx__slider-caption.svelte-wimnwd.svelte-wimnwd {
+.fmhx__slider-caption.svelte-mdm35o.svelte-mdm35o {
   max-width: 10em;
   margin-left: auto;
   margin-right: auto;
@@ -113,26 +113,26 @@
   color: white;
   font-family: Roboto, arial, helvetica, sans-serif; }
 
-.certificates__title.svelte-wimnwd.svelte-wimnwd {
+.certificates__title.svelte-mdm35o.svelte-mdm35o {
   color: #085191; }
 
-.certificates__subtitle.svelte-wimnwd.svelte-wimnwd {
+.certificates__subtitle.svelte-mdm35o.svelte-mdm35o {
   color: #00a0ec; }
 
-.certificates__logo.svelte-wimnwd.svelte-wimnwd {
+.certificates__logo.svelte-mdm35o.svelte-mdm35o {
   display: block;
   width: 100%;
   height: auto; }
 
-.certificates__figure.svelte-wimnwd.svelte-wimnwd {
+.certificates__figure.svelte-mdm35o.svelte-mdm35o {
   margin: 0 auto; }
 
-.certificates__text-link.svelte-wimnwd.svelte-wimnwd {
+.certificates__text-link.svelte-mdm35o.svelte-mdm35o {
   color: #333;
   text-decoration: none;
   display: block;
   font-size: 1rem;
   font-family: Roboto, arial, helvetica, sans-serif; }
 
-.certificates__text-link.svelte-wimnwd.svelte-wimnwd:hover {
+.certificates__text-link.svelte-mdm35o.svelte-mdm35o:hover {
   text-decoration: underline; }
