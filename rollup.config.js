@@ -1,63 +1,69 @@
-import svelte from 'rollup-plugin-svelte';
-import gzipPlugin from 'rollup-plugin-gzip';
-import resolve from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
-import livereload from 'rollup-plugin-livereload';
-import scss from 'rollup-plugin-scss';
-import sveltePreprocess from 'svelte-preprocess';
-import replace from '@rollup/plugin-replace';
-import { terser } from 'rollup-plugin-terser';
+import svelte from "rollup-plugin-svelte";
+import gzipPlugin from "rollup-plugin-gzip";
+import resolve from "@rollup/plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
+import livereload from "rollup-plugin-livereload";
+import scss from "rollup-plugin-scss";
+import sveltePreprocess from "svelte-preprocess";
+import replace from "@rollup/plugin-replace";
+import { terser } from "rollup-plugin-terser";
 
 const production = !process.env.ROLLUP_WATCH;
 
-console.log('config.js production', production);
+console.log("config.js production", production);
 
 // const AWARDS_API_HOST = production ? 'https://api-auszeichnungen.fmh.de' : 'http://localhost:3001';
 
-const AWARDS_API_HOST = 'https://api-auszeichnungen.fmh.de';
+const AWARDS_API_HOST = "https://api-auszeichnungen.fmh.de";
 
-console.log('AWARDS_API_HOST', AWARDS_API_HOST);
+console.log("AWARDS_API_HOST", AWARDS_API_HOST);
 
 function serve() {
-	let server;
-	
-	function toExit() {
-		if (server) server.kill(0);
-	}
+  let server;
 
-	return {
-		writeBundle() {
-			if (server) return;
-			server = require('child_process').spawn('npm', [
-        'run', 'start', '--', '--dev',
-        //'--http3',
-        //'--key /Users/kastner/self-signed/_wildcard.fmh.de-key.pem',
-        //'--cert /Users/kastner/self-signed/_wildcard.fmh.de.pem'
-    ], {
-				stdio: ['ignore', 'inherit', 'inherit'],
-				shell: true
-			});
+  function toExit() {
+    if (server) server.kill(0);
+  }
 
-			process.on('SIGTERM', toExit);
-			process.on('exit', toExit);
-		}
-	};
+  return {
+    writeBundle() {
+      if (server) return;
+      server = require("child_process").spawn(
+        "npm",
+        [
+          "run",
+          "start",
+          "--",
+          "--dev",
+          //'--http3',
+          //'--key /Users/kastner/self-signed/_wildcard.fmh.de-key.pem',
+          //'--cert /Users/kastner/self-signed/_wildcard.fmh.de.pem'
+        ],
+        {
+          stdio: ["ignore", "inherit", "inherit"],
+          shell: true,
+        }
+      );
+
+      process.on("SIGTERM", toExit);
+      process.on("exit", toExit);
+    },
+  };
 }
 
 let serverInstance;
 let livereloadInstance;
 
 function serveOnce() {
-  if (serverInstance) return serverInstance; 
+  if (serverInstance) return serverInstance;
   serverInstance = serve();
   return serverInstance;
 }
 
 function livereloadOnce(watchDir) {
-  if (livereloadInstance) return livereloadInstance; 
+  if (livereloadInstance) return livereloadInstance;
   livereloadInstance = livereload(watchDir);
   return livereloadInstance;
-
 }
 
 const componentConfig = ({ input, out, cssOut }) => {
@@ -65,13 +71,12 @@ const componentConfig = ({ input, out, cssOut }) => {
     input,
     output: {
       sourcemap: true,
-      format: 'iife',
-      name: 'app',
-      file: out 
+      format: "iife",
+      name: "app",
+      file: out,
     },
     plugins: [
-    
-      replace({   
+      replace({
         preventAssignment: true,
         /* 
         process: JSON.stringify({
@@ -81,20 +86,19 @@ const componentConfig = ({ input, out, cssOut }) => {
             ...config().parsed
           },
        }),*/
-        'process.env.AWARDS_API_HOST': JSON.stringify(AWARDS_API_HOST),
-        'process.env.isProd': JSON.stringify(production),
-
+        "process.env.AWARDS_API_HOST": JSON.stringify(AWARDS_API_HOST),
+        "process.env.isProd": JSON.stringify(production),
       }),
-      scss(), 
+      scss(),
       svelte({
         // enable run-time checks when not in production
         dev: !production,
         // we'll extract any component CSS out into
         // a separate file - better for performance
-        preprocess: sveltePreprocess(), 
-        css: css => {
+        preprocess: sveltePreprocess(),
+        css: (css) => {
           css.write(cssOut);
-        }
+        },
       }),
 
       // If you have external dependencies installed from
@@ -104,7 +108,7 @@ const componentConfig = ({ input, out, cssOut }) => {
       // https://github.com/rollup/plugins/tree/master/packages/commonjs
       resolve({
         browser: true,
-        dedupe: ['svelte']
+        dedupe: ["svelte"],
       }),
       commonjs(),
 
@@ -114,83 +118,88 @@ const componentConfig = ({ input, out, cssOut }) => {
 
       // Watch the `public` directory and refresh the
       // browser on changes when not in production
-      !production && livereloadOnce('public'),
+      !production && livereloadOnce("public"),
 
       // If we're building for production (npm run build
       // instead of npm run dev), minify
       production && terser(),
-      production && gzipPlugin()	
+      production && gzipPlugin(),
     ],
     watch: {
-      clearScreen: false
-    }
-  }
+      clearScreen: false,
+    },
+  };
 };
 
 export default [
   componentConfig({
-    input:  'src/main-b2b-banner.js',
-    out: 'public/build/b2b-banner.js',
-    cssOut: 'b2b-banner.css'
+    input: "src/main-b2b-banner.js",
+    out: "public/build/b2b-banner.js",
+    cssOut: "b2b-banner.css",
   }),
   componentConfig({
-    input:  'src/main-newsletter-register.js',
-    out: 'public/build/newsletter-register.js',
-    cssOut: 'newsletter-register.css'
+    input: "src/main-fmhx-banner.js",
+    out: "public/build/fmhx-banner.js",
+    cssOut: "fmhx-banner.css",
   }),
   componentConfig({
-    input:  'src/main-awards-table.js',
-    out: 'public/build/awards-table.js',
-    cssOut: 'awards-table.css'
+    input: "src/main-newsletter-register.js",
+    out: "public/build/newsletter-register.js",
+    cssOut: "newsletter-register.css",
   }),
   componentConfig({
-    input:  'src/main-count-down.js',
-    out: 'public/build/count-down.js',
-    cssOut: 'count-down.css'
+    input: "src/main-awards-table.js",
+    out: "public/build/awards-table.js",
+    cssOut: "awards-table.css",
   }),
   componentConfig({
-    input:  'src/main-random-laureates.js',
-    out: 'public/build/random-laureates.js',
-    cssOut: 'random-laureates.css'
+    input: "src/main-count-down.js",
+    out: "public/build/count-down.js",
+    cssOut: "count-down.css",
   }),
   componentConfig({
-    input:  'src/main-gallery.js',
-    out: 'public/build/gallery.js',
-    cssOut: 'gallery.css'
+    input: "src/main-random-laureates.js",
+    out: "public/build/random-laureates.js",
+    cssOut: "random-laureates.css",
   }),
   componentConfig({
-    input:  'src/main-article-teasers.js',
-    out: 'public/build/article-teasers.js',
-    cssOut: 'article-teasers.css'
+    input: "src/main-gallery.js",
+    out: "public/build/gallery.js",
+    cssOut: "gallery.css",
   }),
   componentConfig({
-    input:  'src/main-topic-segments.js',
-    out: 'public/build/topic-segments.js',
-    cssOut: 'topic-segments.css'
+    input: "src/main-article-teasers.js",
+    out: "public/build/article-teasers.js",
+    cssOut: "article-teasers.css",
   }),
   componentConfig({
-    input:  'src/main-youtube-video.js',
-    out: 'public/build/youtube-video.js',
-    cssOut: 'youtube-video.css'
+    input: "src/main-topic-segments.js",
+    out: "public/build/topic-segments.js",
+    cssOut: "topic-segments.css",
   }),
   componentConfig({
-    input:  'src/main-text-box.js',
-    out: 'public/build/text-box.js',
-    cssOut: 'text-box.css'
+    input: "src/main-youtube-video.js",
+    out: "public/build/youtube-video.js",
+    cssOut: "youtube-video.css",
   }),
   componentConfig({
-    input:  'src/main-awards-table.js',
-    out: 'public/build/awards-table.js',
-    cssOut: 'awards-table.css'
+    input: "src/main-text-box.js",
+    out: "public/build/text-box.js",
+    cssOut: "text-box.css",
   }),
   componentConfig({
-    input:  'src/main-image-box.js',
-    out: 'public/build/image-box.js',
-    cssOut: 'image-box.css'
+    input: "src/main-awards-table.js",
+    out: "public/build/awards-table.js",
+    cssOut: "awards-table.css",
   }),
   componentConfig({
-    input:  'src/main-directory.js',
-    out: 'public/build/directory.js',
-    cssOut: 'directory.css'
-  })
+    input: "src/main-image-box.js",
+    out: "public/build/image-box.js",
+    cssOut: "image-box.css",
+  }),
+  componentConfig({
+    input: "src/main-directory.js",
+    out: "public/build/directory.js",
+    cssOut: "directory.css",
+  }),
 ];
