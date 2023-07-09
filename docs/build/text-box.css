@@ -1,0 +1,33 @@
+.text-box__p.svelte-99xw3c {
+  font-family: Roboto, arial, helvetica, sans-serif; }
+
+.text-box__link.svelte-99xw3c {
+  color: #1194db; }
+
+.text-box__p.svelte-99xw3c {
+  color: #181818;
+  line-height: 1.4em;
+  font-size: 16px; }
+
+.text-box__link.svelte-99xw3c {
+  display: block;
+  text-decoration: none; }
+
+.text-box__link.svelte-99xw3c:hover {
+  text-decoration: underline; }
+
+.text-box__button.svelte-99xw3c {
+  letter-spacing: 0.05em;
+  height: 34px;
+  line-height: 32px;
+  font-size: 16px;
+  border-radius: 5px;
+  color: white;
+  background-color: #1194db;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  max-width: 180px;
+  margin-top: 1em;
+  margin-left: auto;
+  margin-right: auto; }

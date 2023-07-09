@@ -13,15 +13,15 @@
   let dirItems = [];
   folders.forEach((f) => {
     f.style.height = 0;
-    f.style.overflowY = 'hidden';
+    f.style.overflowY = "hidden";
     dirItems = [...dirItems, f];
   });
 
   function toggleSelectedItem(index) {
     dirItems[index].style.height =
-      dirItems[index].style.height === '0px' ? 'auto' : '0px';
+      dirItems[index].style.height === "0px" ? "auto" : "0px";
     dirItems[index].style.overflowY =
-      dirItems[index].style.overflowY === 'hidden' ? 'auto' : 'hidden';
+      dirItems[index].style.overflowY === "hidden" ? "auto" : "hidden";
   }
 
   function toggleVertDirPos() {
@@ -37,14 +37,14 @@
     showAll = !showAll;
     if (showAll) {
       dirItems.forEach((f) => {
-        f.style.height = 'auto';
-        f.style.overflowY = 'auto';
+        f.style.height = "auto";
+        f.style.overflowY = "auto";
       });
       return;
     }
     dirItems.forEach((f) => {
-      f.style.height = '0px';
-      f.style.overflowY = 'hidden';
+      f.style.height = "0px";
+      f.style.overflowY = "hidden";
     });
   }
 
@@ -55,7 +55,7 @@
 </script>
 
 <section
-  class="directory 
+  class="directory
    {vertDirPos === DirPosTop ? 'directory--top' : 'directory--bottom'}
    {horDirPos === DirPosLeft ? 'directory--left' : 'directory--right'}"
 >
@@ -65,7 +65,7 @@
       : ''}"
   >
     <header class="directory__header">
-      <a href="#" class="directory__burger" on:click={toggleBurger}>
+      <a href="/#" class="directory__burger" on:click={toggleBurger}>
         <div class="directory__burger-bun directory__burger-bun--top" />
         <div class="directory__burger-bun directory__burger-bun--middle" />
         <div class="directory__burger-bun directory__burger-bun--bottom" />
@@ -102,7 +102,7 @@
           on:click={() => toggleSelectedItem(index)}
         >
           <span class="directory__item-nr">{index + 1}</span>
-          {item.dataset['dir']}
+          {item.dataset["dir"]}
         </li>
       {/each}
     </ul>
@@ -110,7 +110,7 @@
       <a
         href="#"
         class="directory__show directory__show--all"
-        on:click={toggleShowAll}>{ showAll ? 'Hide All' : 'Show All' }</a
+        on:click={toggleShowAll}>{showAll ? "Hide All" : "Show All"}</a
       >
       <!--a
         href="#"
@@ -122,9 +122,9 @@
 </section>
 
 <style type="text/scss">
-  @import './css/buttons.scss';
-  @import './css/colors.scss';
-  @import './css/fonts.scss';
+  @import "./css/buttons.scss";
+  @import "./css/colors.scss";
+  @import "./css/fonts.scss";
   .directory {
     &,
     & * {
@@ -153,7 +153,7 @@
         border-radius: 4px;
         width: 2rem;
         display: block;
-        content: ' ';
+        content: " ";
         background-color: white;
         height: 0.3rem;
       }
@@ -179,7 +179,7 @@
       &:before {
         display: inline-block;
         color: white;
-        content: '▲';
+        content: "▲";
       }
       &--top {
         text-align: center;

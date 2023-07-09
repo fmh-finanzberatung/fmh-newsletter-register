@@ -11,49 +11,51 @@
     <div class="b2b-banner__fmhx fmhx">
       <h1 class="fmhx__title">Schon gesehen?</h1>
       <h2 class="fmhx__subtitle">
-        FMH hat jetzt auch eine eigene B2B-Brand: FMH X
+        FMH hat jetzt auch eine eigene B2B-Brand: <span class="b2b-banner__fmhx"
+          >FMH X</span
+        >
       </h2>
       <p class="fmhx__p">
         Profitieren Sie von unseren Daten, Produkten und Leistungen!
       </p>
-      <ul class="b2b-banner__slider-list">
+      <ul class="fmhx__slider-list">
         <a
           role="listitem"
-          class="b2b-banner__slider-item"
+          class="fmhx__slider-item"
           href="https://www.fmhx.de"
           title="Banking &amp; Corporate Services"
         >
           <BankingIcon />
-          <span class="b2b-banner__slider-caption">
+          <span class="fmhx__slider-caption">
             Banking &amp; Corporate Services
           </span>
         </a>
         <a
           role="listitem"
-          class="b2b-banner__slider-item"
+          class="fmhx__slider-item"
           href="https://www.fmhx.de"
           title="Publishing Services"
         >
           <PublishingServicesIcon />
-          <span class="b2b-banner__slider-caption"> Publishing Services </span>
+          <span class="fmhx__slider-caption">Publishing Services</span>
         </a>
         <a
           role="listitem"
-          class="b2b-banner__slider-item"
+          class="fmhx__slider-item"
           href="/fuer-redaktionen"
           title="Presse Services"
         >
           <PressServicesIcon />
-          <span class="b2b-banner__slider-caption"> Presse-Services </span>
+          <span class="fmhx__slider-caption">Presse-Services</span>
         </a>
         <a
           role="listitem"
-          class="b2b-banner__slider-item"
+          class="fmhx__slider-item"
           href="/banking-corporate-service"
           title="Info-Services"
         >
           <InfoIcon />
-          <span class="b2b-banner__slider-caption"> Info-Services </span>
+          <span class="fmhx__slider-caption">Info-Services</span>
         </a>
       </ul>
 
@@ -118,7 +120,11 @@
     gap: 2rem;
     width: 100%;
     max-width: 1200px;
+    &__fmhx {
+      //
+    }
     &__button {
+      text-align: center;
       @include button;
       @include button__standard;
       border-radius: 3px;
@@ -145,10 +151,26 @@
 
   .fmhx,
   .certificates {
-    flex: 1 1 300;
+    flex: 1 1 0;
     min-width: 300px;
     position: relative;
-    padding-bottom: 4rem;
+    padding: 1rem 1rem 3.5rem;
+    &__title,
+    &__subtitle {
+      font-weight: 400;
+      margin: 0;
+      padding: 0;
+      font-family: $font-family__primary;
+      line-height: 1.2em;
+    }
+    &__title {
+      font-size: 1.4rem;
+      font-family: $font-family__primary;
+    }
+    &__subtitle {
+      font-size: 1.6rem;
+      font-family: $font-family__primary;
+    }
     &__p {
       color: white;
       font-family: $font-family__primary;
@@ -169,49 +191,67 @@
   }
 
   .fmhx {
-    padding: 1rem;
     background-color: $color__primary--lighter-a;
-    &__title,
-    &__subtitle {
-      margin: 0;
-      padding: 0;
-      font-family: $font-family__primary;
-      line-height: 1.2em;
-    }
     &__title {
       font-size: 1.4rem;
       font-family: $font-family__primary;
-      font-weight: 300;
       color: $color__primary--tender;
     }
     &__subtitle {
       font-size: 1.6rem;
       font-family: $font-family__primary;
-      font-weight: 300;
       color: white;
+    }
+    &__slider-list {
+      padding: 0.5rem 0;
+      margin: 0.5rem 0;
+      border-radius: 3px;
+      gap: 1rem;
+      display: flex;
+      flex-flow: row wrap;
+      align-items: bottom;
+      background-color: $color__primary;
+      list-style: none;
+    }
+    &__slider-item {
+      flex: 1 1 0;
+      min-width: 100px;
+      text-align: center;
+    }
+    &__slider-caption {
+      max-width: 10em;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      color: white;
+      font-family: $font-family__primary;
     }
   }
 
   .certificates {
     &__title {
-      font-size: 1.4rem;
-      font-family: $font-family__primary;
-      font-weight: 300;
       color: $color__primary;
     }
     &__subtitle {
-      font-size: 1.6rem;
-      font-family: $font-family__primary;
-      font-weight: 300;
-      color: $color__primary;
+      color: $color__primary--light;
     }
     &__logo {
       display: block;
       width: 100%;
-      max-width: calc(400px - 2rem);
       height: auto;
     }
     &__figure {
+      margin: 0 auto;
+    }
+    &__text-link {
+      color: #333;
+      text-decoration: none;
+      display: block;
+      font-size: 1rem;
+      &:hover {
+        text-decoration: underline;
+      }
+      font-family: $font-family__primary;
     }
   }
 </style>
