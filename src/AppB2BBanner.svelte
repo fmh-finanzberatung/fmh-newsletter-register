@@ -12,7 +12,7 @@
       <h1 class="fmhx__title">Schon gesehen?</h1>
       <h2 class="fmhx__subtitle">
         FMH hat jetzt auch eine eigene B2B-Brand: <span class="b2b-banner__fmhx"
-          >FMH X</span
+          >FMH&nbsp;X</span
         >
       </h2>
       <p class="fmhx__p">
@@ -123,7 +123,7 @@
     width: 100%;
     max-width: 1210px;
     &__fmhx {
-      //
+      color: white;
     }
     &__button {
       text-align: center;
@@ -205,7 +205,7 @@
       color: white;
     }
     &__slider-list {
-      padding: 0.5rem 0;
+      padding: 0.5rem 0.5rem;
       margin: 0.5rem 0;
       border-radius: 3px;
       gap: 1rem;
@@ -219,6 +219,11 @@
       flex: 1 1 0;
       min-width: 100px;
       text-align: center;
+      text-decoration: none;
+      border-radius: 3px;
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
     }
     &__slider-caption {
       max-width: 10em;

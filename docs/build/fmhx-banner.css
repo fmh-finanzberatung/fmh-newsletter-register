@@ -1,4 +1,4 @@
-.b2b-banner.svelte-2dypm8.svelte-2dypm8 {
+.b2b-banner.svelte-sgv10b.svelte-sgv10b {
   display: flex;
   flex-flow: row wrap;
   padding: 0;
@@ -7,14 +7,17 @@
   width: 100%;
   max-width: 1210px; }
 
-.b2b-banner.svelte-2dypm8.svelte-2dypm8, .b2b-banner.svelte-2dypm8 .svelte-2dypm8 {
+.b2b-banner.svelte-sgv10b.svelte-sgv10b, .b2b-banner.svelte-sgv10b .svelte-sgv10b {
   box-sizing: border-box; }
 
-.b2b-banner.svelte-2dypm8 .svelte-2dypm8 {
+.b2b-banner.svelte-sgv10b .svelte-sgv10b {
   margin: 0;
   padding: 0; }
 
-.b2b-banner__button.svelte-2dypm8.svelte-2dypm8 {
+.b2b-banner__fmhx.svelte-sgv10b.svelte-sgv10b {
+  color: white; }
+
+.b2b-banner__button.svelte-sgv10b.svelte-sgv10b {
   text-align: center;
   letter-spacing: 0.05em;
   height: 34px;
@@ -32,35 +35,35 @@
   padding: 0.25em 0.5em;
   width: 75%; }
 
-.b2b-banner__button--primary.svelte-2dypm8.svelte-2dypm8:hover {
+.b2b-banner__button--primary.svelte-sgv10b.svelte-sgv10b:hover {
   color: #005284;
   background-color: white; }
 
-.b2b-banner__button--secondary.svelte-2dypm8.svelte-2dypm8:hover {
+.b2b-banner__button--secondary.svelte-sgv10b.svelte-sgv10b:hover {
   background-color: #0066a1; }
 
-.fmhx.svelte-2dypm8.svelte-2dypm8, .certificates.svelte-2dypm8.svelte-2dypm8 {
+.fmhx.svelte-sgv10b.svelte-sgv10b, .certificates.svelte-sgv10b.svelte-sgv10b {
   flex: 1 1 0;
   min-width: 300px;
   position: relative;
   padding: 1rem 1rem 3.5rem; }
 
-.fmhx__title.svelte-2dypm8.svelte-2dypm8, .fmhx__subtitle.svelte-2dypm8.svelte-2dypm8, .certificates__title.svelte-2dypm8.svelte-2dypm8, .certificates__subtitle.svelte-2dypm8.svelte-2dypm8 {
+.fmhx__title.svelte-sgv10b.svelte-sgv10b, .fmhx__subtitle.svelte-sgv10b.svelte-sgv10b, .certificates__title.svelte-sgv10b.svelte-sgv10b, .certificates__subtitle.svelte-sgv10b.svelte-sgv10b {
   font-weight: 400;
   margin: 0;
   padding: 0;
   font-family: Roboto, arial, helvetica, sans-serif;
   line-height: 1.2em; }
 
-.fmhx__title.svelte-2dypm8.svelte-2dypm8, .certificates__title.svelte-2dypm8.svelte-2dypm8 {
+.fmhx__title.svelte-sgv10b.svelte-sgv10b, .certificates__title.svelte-sgv10b.svelte-sgv10b {
   font-size: 1.4rem;
   font-family: Roboto, arial, helvetica, sans-serif; }
 
-.fmhx__subtitle.svelte-2dypm8.svelte-2dypm8, .certificates__subtitle.svelte-2dypm8.svelte-2dypm8 {
+.fmhx__subtitle.svelte-sgv10b.svelte-sgv10b, .certificates__subtitle.svelte-sgv10b.svelte-sgv10b {
   font-size: 1.6rem;
   font-family: Roboto, arial, helvetica, sans-serif; }
 
-.fmhx__p.svelte-2dypm8.svelte-2dypm8 {
+.fmhx__p.svelte-sgv10b.svelte-sgv10b {
   color: white;
   font-family: Roboto, arial, helvetica, sans-serif;
   font-size: 1rem;
@@ -68,7 +71,7 @@
   margin: 0;
   padding: 0; }
 
-.fmhx__buttons.svelte-2dypm8.svelte-2dypm8, .certificates__buttons.svelte-2dypm8.svelte-2dypm8 {
+.fmhx__buttons.svelte-sgv10b.svelte-sgv10b, .certificates__buttons.svelte-sgv10b.svelte-sgv10b {
   padding: 1rem;
   position: absolute;
   bottom: 0;
@@ -76,21 +79,21 @@
   width: 100%;
   margin-bottom: 0; }
 
-.fmhx.svelte-2dypm8.svelte-2dypm8 {
+.fmhx.svelte-sgv10b.svelte-sgv10b {
   background-color: #1194db; }
 
-.fmhx__title.svelte-2dypm8.svelte-2dypm8 {
+.fmhx__title.svelte-sgv10b.svelte-sgv10b {
   font-size: 1.4rem;
   font-family: Roboto, arial, helvetica, sans-serif;
   color: #5fd5ff; }
 
-.fmhx__subtitle.svelte-2dypm8.svelte-2dypm8 {
+.fmhx__subtitle.svelte-sgv10b.svelte-sgv10b {
   font-size: 1.6rem;
   font-family: Roboto, arial, helvetica, sans-serif;
   color: white; }
 
-.fmhx__slider-list.svelte-2dypm8.svelte-2dypm8 {
-  padding: 0.5rem 0;
+.fmhx__slider-list.svelte-sgv10b.svelte-sgv10b {
+  padding: 0.5rem 0.5rem;
   margin: 0.5rem 0;
   border-radius: 3px;
   gap: 1rem;
@@ -100,12 +103,17 @@
   background-color: #085191;
   list-style: none; }
 
-.fmhx__slider-item.svelte-2dypm8.svelte-2dypm8 {
+.fmhx__slider-item.svelte-sgv10b.svelte-sgv10b {
   flex: 1 1 0;
   min-width: 100px;
-  text-align: center; }
+  text-align: center;
+  text-decoration: none;
+  border-radius: 3px; }
 
-.fmhx__slider-caption.svelte-2dypm8.svelte-2dypm8 {
+.fmhx__slider-item.svelte-sgv10b.svelte-sgv10b:hover {
+  background-color: rgba(255, 255, 255, 0.1); }
+
+.fmhx__slider-caption.svelte-sgv10b.svelte-sgv10b {
   max-width: 10em;
   margin-left: auto;
   margin-right: auto;
@@ -113,26 +121,26 @@
   color: white;
   font-family: Roboto, arial, helvetica, sans-serif; }
 
-.certificates__title.svelte-2dypm8.svelte-2dypm8 {
+.certificates__title.svelte-sgv10b.svelte-sgv10b {
   color: #085191; }
 
-.certificates__subtitle.svelte-2dypm8.svelte-2dypm8 {
+.certificates__subtitle.svelte-sgv10b.svelte-sgv10b {
   color: #00a0ec; }
 
-.certificates__logo.svelte-2dypm8.svelte-2dypm8 {
+.certificates__logo.svelte-sgv10b.svelte-sgv10b {
   display: block;
   width: 100%;
   height: auto; }
 
-.certificates__figure.svelte-2dypm8.svelte-2dypm8 {
+.certificates__figure.svelte-sgv10b.svelte-sgv10b {
   margin: 0 auto; }
 
-.certificates__text-link.svelte-2dypm8.svelte-2dypm8 {
+.certificates__text-link.svelte-sgv10b.svelte-sgv10b {
   color: #333;
   text-decoration: none;
   display: block;
   font-size: 1rem;
   font-family: Roboto, arial, helvetica, sans-serif; }
 
-.certificates__text-link.svelte-2dypm8.svelte-2dypm8:hover {
+.certificates__text-link.svelte-sgv10b.svelte-sgv10b:hover {
   text-decoration: underline; }
