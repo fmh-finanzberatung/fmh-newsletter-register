@@ -70,10 +70,10 @@
       <figure class="certificates__figure">
         <caption class="certificates__caption">
           <div class="certificates__title">
-            Zertifizierte Kundenfreundlichkeit
+            Kundenorientierte Baufinanzierung 
           </div>
           <div class="certificates__subtitle">
-            Für Vermittler von Baufinanzierungen
+            FMH-Zertifikat für Baufinanzierungsvermittler
           </div>
         </caption>
         <a href="https://cert.fmh.de" class="certificates__logo-link">
